@@ -1,0 +1,71 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1.25in]{geometry}
+
+% text
+\usepackage{mathptmx}
+\usepackage{textcomp}
+\usepackage{lipsum}
+\linespread{1.2}
+
+% header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\newcommand{\pageauthor}{}
+\lhead{\pageauthor}
+\rhead{\thepage}
+
+% links
+\usepackage{bookmark}
+\usepackage{hyperref}
+\usepackage[numbib]{tocbibind}
+
+% figures
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% tables
+\usepackage{tabularx}
+\usepackage{multirow}
+\newcolumntype{L}{>{\centering\arraybackslash}X}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\raisedtilde}{\raisebox{0.5ex}{\texttildelow}}
+
+% meta
+\title{Quantum Channels: Transition from Classical to Quantum Channels}
+\author{Himanshu Singh \and Raagav Ramakrishnan \and Shreyas Sinha \and Yash Seri}
+\date{\today}
+
+\begin{document}
+
+% front
+\maketitle
+\tableofcontents
+
+\renewcommand{\pageauthor}{Author 1}
+\include{./sections/accessible_information}
+\include{./sections/holevo_bound}
+
+\renewcommand{\pageauthor}{Author 2}
+\include{./sections/quantum_noiseless_channel}
+\include{./sections/classical_capacity}
+
+\renewcommand{\pageauthor}{Himanshu Singh}
+\include{./sections/private_capacity}
+\include{./sections/quantum_capacity}
+
+\renewcommand{\pageauthor}{Shreyas Sinha}
+\include{./sections/super_additivity}
+\include{./sections/examples}
+
+\renewcommand{\pageauthor}{}
+\bibliographystyle{ieeetr}
+\bibliography{refs}
+
+\end{document}

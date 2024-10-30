@@ -1,0 +1,62 @@
+\documentclass[a4paper, 9pt]{beamer}
+\beamertemplatenavigationsymbolsempty
+
+% text
+\usepackage{times}
+\linespread{1.4}
+
+% header and footer
+\newcommand{\pageauthor}{}
+\setbeamertemplate{footline}[text line]{%
+    \parbox{\linewidth}{\vspace*{-24pt}\pageauthor\hfill\insertpagenumber}}
+
+% bibliography
+\usepackage[style=ieee]{biblatex}
+\bibliography{refs.bib}
+\renewcommand*{\bibfont}{\footnotesize}
+
+% figures
+\usepackage{graphicx}
+
+% maths
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% meta
+\title{Quantum Channels: Transition from Classical to Quantum Channels}
+\author{Himanshu Singh \and Raagav Ramakrishnan \and Shreyas Sinha \and Yash Seri}
+\date{\today}
+
+\begin{document}
+
+% front
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \tableofcontents
+\end{frame}
+
+\renewcommand{\pageauthor}{Author 1}
+\include{./sections/accessible_information}
+\include{./sections/holevo_bound}
+
+\renewcommand{\pageauthor}{Author 2}
+\include{./sections/quantum_noiseless_channel}
+\include{./sections/classical_capacity}
+
+\renewcommand{\pageauthor}{Himanshu Singh}
+\include{./sections/private_capacity}
+\include{./sections/quantum_capacity}
+
+\renewcommand{\pageauthor}{Shreyas Sinha}
+\include{./sections/super_additivity}
+\include{./sections/examples}
+
+\renewcommand{\pageauthor}{}
+\begin{frame}[plain, allowframebreaks]{References}
+    \printbibliography[heading=none]
+\end{frame}
+
+\end{document}
