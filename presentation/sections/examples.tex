@@ -1,4 +1,20 @@
 \section{Examples of Quantum Channels}
 
-\begin{frame}{Sample Frame}
+\begin{frame}{Examples of quantum channels - Bit Flip channel}
+    We present the \textbf{Bit Flip} channel.\\
+    The Bit flip channel, as its name suggests, flips a qubit from $|0\rangle $ to $|1\rangle $ (or $|1\rangle $ to $|0\rangle $) with probability $p$, and
+    does nothing with probability $1-p$:
+    \begin{equation}
+        \mathcal{N}_p(\rho) = (1-p)\rho + pX\rho X = K_0 \rho K_0^\dagger + K_1 \rho K_1^\dagger
+    \end{equation}
+    Where $X$ is the Pauli X operator:
+    \begin{math}
+        X = \begin{bmatrix}
+            0 & 1\\
+            1 & 0
+        \end{bmatrix}
+    \end{math}\\
+    and $K_0 = (\sqrt{1-p})\mathbb{I} $ and $K_1 = (\sqrt{p})X$ are the Kraus operators.\\
+
+    More channel examples will be produced soon along with analyses on the various capacities of these channels.
 \end{frame}

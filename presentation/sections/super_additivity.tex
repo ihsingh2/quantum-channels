@@ -1,4 +1,27 @@
 \section{Super Additivity of Quantum Channels}
 
-\begin{frame}{Sample Frame}
+\begin{frame}{Superadditivity}
+    Superadditivity in quantum information theory refers to the phenomenon where certain types of quantum capacities increase when multiple uses of a
+    quantum channel are considered together, rather than treating each channel use independently. This property arises because quantum entanglement and
+    correlations can enhance the effectiveness of the channel when used in a collective or joint manner.\\
+    This superadditivity is the result of entanglement and other exotic correlation phenomena that arises in quantum systems. Superadditivity enhances
+    communication capabilities of quantum channels and allows more communication than what their classical counterparts could (sometimes even through
+    zero capacity channels).
+\end{frame}
+
+\begin{frame}{Superadditivity of various quantities}
+    \begin{itemize}
+        \item Coherent information of a quantum channel:
+        $$Q(\mathcal{N} \otimes \mathcal{M} ) \geq Q(\mathcal{N} ) + Q(\mathcal{M} )$$
+        or $$(Q(\mathcal{N}^{\otimes m}) > mQ(\mathcal{N}))$$
+        where $Q(\mathcal{N}) = \max_{\phi_{AA'}}I(A\rangle B)_\rho$ and ${\phi_{AA'}}$ are all possible input states
+        \item Holevo information:
+        $$\chi (\mathcal{N} \otimes \mathcal{M} ) \geq \chi (\mathcal{N}) + \chi (\mathcal{M})$$
+        \item Private capacity (over $m$ applications of the channel):
+        $$P(\mathcal{N}^{\otimes m}) > mP(\mathcal{N})$$
+    \end{itemize}    
+\end{frame}
+
+\begin{frame}
+    Since Holevo information and Coherent information are superadditive, Classical capacity and Quantum capacity are, by extension, also superadditive.
 \end{frame}
