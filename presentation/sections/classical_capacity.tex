@@ -1,4 +1,17 @@
-\section{Classical Capacity of Quantum Channels}
+\section{Classical Capacity of a Quantum Channel}
 
-\begin{frame}{Sample Frame}
+\begin{frame}{Definition of Classical Capacity}
+The classical capacity of a quantum channel \( \mathcal{N} \) is the maximum amount of classical information that can be transmitted per use of the channel with arbitrarily low error, as the number of channel uses goes to infinity. It is denoted by \( C(\mathcal{N}) \) and measured in bits per channel use.
+\end{frame}
+
+\begin{frame}{Types of Quantum Channels}
+Quantum channels may be \textbf{noisy}, meaning they can alter or degrade the transmitted quantum states. Noise can arise from decoherence, loss, or other environmental factors. Common examples include depolarizing channels, dephasing channels, and amplitude damping channels.
+\end{frame}
+
+\begin{frame}{Formula for Classical Capacity}
+The classical capacity \( C(\mathcal{N}) \) of a quantum channel \( \mathcal{N} \) is given by the regularized Holevo capacity:
+\begin{equation}
+    C(\mathcal{N}) = \lim_{n \to \infty} \frac{1}{n} \chi\left(\mathcal{N}^{\otimes n}\right)
+\end{equation}
+where \( \chi \) is the Holevo quantity, providing an upper bound on the amount of classical information that can be transmitted.
 \end{frame}

@@ -1,10 +1,13 @@
 \section{Holevo Bound}
+
+\begin{frame}{Holevo Bound}
 The Holevo bound is the upper bound of information that can be extracted from a quantum system, characterized by:
 \[
 \chi = S(\rho) - \sum_i p_i S(\rho_i).
 \]
+\end{frame}
 
-\section{Derivation of the Holevo Bound}
+\begin{frame}{Derivation of the Holevo Bound}
 To prove this, consider a quantum system that encodes classical information represented by a distribution with probability \( p_x \) for each input \( x \), allowing us to define the classical state \( \rho_x \) as:
 \[
 \rho_X := \sum_x p_x |x\rangle \langle x|,
@@ -20,7 +23,9 @@ The received combined state is represented as:
 \rho := \text{tr}_X(\rho_{XQ}) = \sum_x p_x \rho_x,
 \]
 where \( \text{tr}_X \) represents the trace over \( \rho_{XQ} \).
+\end{frame}
 
+\begin{frame}{Derivation of the Holevo Bound}
 To bound the maximum obtainable information, we need to bound the mutual information \( S(X : Y) \) with \( S(X : Q) \). From the monotonicity of quantum mutual information, we have:
 \[
 S(X : Q') \leq S(X : Q),
@@ -43,3 +48,4 @@ S(X : Q) &= S(X) + S(Q) - S(XQ) \\
          &= S(\rho) - \sum_x p_x S(\rho_x),
 \end{align*}
 which gives the Holevo bound.
+\end{frame}
