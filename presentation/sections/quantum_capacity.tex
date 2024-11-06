@@ -1,4 +1,28 @@
 \section{Quantum Capacity of Quantum Channels}
 
-\begin{frame}{Sample Frame}
+\begin{frame}{Quantum Capacity of a Quantum Channel}
+The quantity capacity $Q(\mathcal{N})$ of a quantum channel is defined as follows (where $\ket{\psi} = U^{\mathcal{N}}_{A' \rightarrow BE} \ket{\phi}_{AA'}$).
+\begin{tcolorbox}
+\begin{align*}
+Q(\mathcal{N}) &= \max_{\phi_{AA'}} \left[ S(B)_\rho - S(AB)_\rho \right] \\
+&= \max_{\phi_{AA'}} \left[ S(B)_\psi - S(E)_\psi \right]
+\end{align*}
+\end{tcolorbox}
+
+\begin{figure}
+    \includegraphics[width=0.5\textwidth]{figures/quantum_communication_quantum_channel.png}
+    \caption{Quantum communication through a quantum channel.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Properties: Quantum Capacity of a Quantum Channel}
+\begin{itemize}
+    \setlength{\itemsep}{1.5em}
+    \item Non-negativity
+    $$Q(\mathcal{N}) \geq 0$$
+    \item Non-additivity
+    $$Q(\mathcal{N} \otimes \mathcal{M}) \neq Q(\mathcal{N}) + Q(\mathcal{M})$$
+    \item Relation with other capacities
+    $$Q(\mathcal{N}) \leq P(\mathcal{N}) \leq C(\mathcal{N})$$
+\end{itemize}
 \end{frame}
