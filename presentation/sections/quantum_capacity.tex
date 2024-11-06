@@ -26,3 +26,16 @@ Q(\mathcal{N}) &= \max_{\phi_{AA'}} \left[ S(B)_\rho - S(AB)_\rho \right] \\
     $$Q(\mathcal{N}) \leq P(\mathcal{N}) \leq C(\mathcal{N})$$
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Proof: Relation with other capacities}
+We will consider a pure state maximizing the coherent information. Let $\sigma_{XA'}$ denote the augmented classical-quantum state that correlates with index x.
+$$\sigma_{XA'} = \sum_{x} p_X(x) \ket{x}\bra{x} \otimes \ket{\phi_x}\bra{\phi_x}_{A'}$$
+
+\begin{align*}
+Q(\mathcal{N}) &= H(B)_{\sigma} - H(E)_{\sigma}\\
+&= H(B)_{\sigma} - H(B|X)_{\sigma} - H(E)_{\sigma} + H(B|X)_{\sigma}\\
+&= I(X;B)_{\sigma} - H(E)_{\sigma} + H(E|X)_{\sigma}\\
+&= I(X;B)_{\sigma} - I(X;E)_{\sigma}\\
+&\le P(\mathcal{N}).
+\end{align*}
+\end{frame}
