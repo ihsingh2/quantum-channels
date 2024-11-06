@@ -14,7 +14,7 @@
     A quantum channel acts as a linear \textit{Completely Positive Trace Preserving (CPTP)} map from one density matrix to the other. This means that the product state
     of the system and the environment stays positive throughout the transformation, and the trace remains constant. These two properties are essential for a channel to
     be physically viable and make sense in the real world.\\
-    It is usually denoted with $\mathcal{N}$ and the state generated after the application of the channel is $\mathcal{N} (\rho)$.\\
+    It is usually denoted with $\mathcal{N}$ and the state generated after the application of the channel on the original state is $\mathcal{N} (\rho)$.\\
     Generally, this channel is second one of the three steps that happen in the process of sending information from A to B, the others being encoding and decoding.
     These three steps have been illustrated in the following figures.
 \end{frame}
@@ -59,7 +59,7 @@
     but there are some striking exceptions as well. We define some of these here:
     \begin{itemize}
         \item Quantum Conditional Entropy
-        $$S(A|B) = S(\rho_AB) - S(\rho_B)$$
+        $$S(A|B) = S(\rho_{AB}) - S(\rho_B)$$
         where $\rho_B$ is the system with $A$ traced out. Interestingly, this quantity can be negative, something which is not seen in its classical counterpart.
     \end{itemize}
 \end{frame}
@@ -67,7 +67,7 @@
 \begin{frame}{Other quantities}
     \begin{itemize}
         \item Quantum Mutual Information
-        $$I(A:B) = S(\rho_A) + S(\rho_B) - S(\rho_AB)$$
+        $$I(A:B) = S(\rho_A) + S(\rho_B) - S(\rho_{AB})$$
         Quantum mutual information has a greater upper bound (by 2 times) compared to its classical counterpart.
         \item Quantum Relative Entropy
         $$D(\rho || \sigma) = Tr[\rho (log(\rho) - log(\sigma))]$$
