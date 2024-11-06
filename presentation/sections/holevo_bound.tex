@@ -3,7 +3,7 @@
 \begin{frame}{Holevo Bound}
 The Holevo bound is the upper bound of information that can be extracted from a quantum system, characterized by:
 \[
-\chi = S(\rho) - \sum_i p_i S(\rho_i).
+\chi = I(\rho) - \sum_i p_i I(\rho_i).
 \]
 \end{frame}
 
@@ -26,26 +26,26 @@ where \( \text{tr}_X \) represents the trace over \( \rho_{XQ} \).
 \end{frame}
 
 \begin{frame}{Derivation of the Holevo Bound}
-To bound the maximum obtainable information, we need to bound the mutual information \( S(X : Y) \) with \( S(X : Q) \). From the monotonicity of quantum mutual information, we have:
+To bound the maximum obtainable information, we need to bound the mutual information \( I(X : Y) \) with \( I(X : Q) \). From the monotonicity of quantum mutual information, we have:
 \[
-S(X : Q') \leq S(X : Q),
+I(X : Q') \leq I(X : Q),
 \]
 and similarly:
 \[
-S(X : Y) \leq S(X : Q'Y).
+I(X : Y) \leq I(X : Q'Y).
 \]
 
 Combining these inequalities, we get:
 \[
-S(X : Y) \leq S(X : Q).
+I(X : Y) \leq I(X : Q).
 \]
 
-Now, we simplify \( S(X : Q) \) as follows:
+Now, we simplify \( I(X : Q) \) as follows:
 \begin{align*}
-S(X : Q) &= S(X) + S(Q) - S(XQ) \\
-         &= S(X) + S(\rho) + \text{tr}(\rho_{XQ} \log \rho_{XQ}) \\
-         &= S(\rho) + \sum_x p_x \, \text{tr}(\rho_x \log \rho_x) \\
-         &= S(\rho) - \sum_x p_x S(\rho_x),
+I(X : Q) &= I(X) + I(Q) - I(XQ) \\
+         &= I(X) + I(\rho) + \text{tr}(\rho_{XQ} \log \rho_{XQ}) \\
+         &= I(\rho) + \sum_x p_x \, \text{tr}(\rho_x \log \rho_x) \\
+         &= I(\rho) - \sum_x p_x I(\rho_x),
 \end{align*}
 which gives the Holevo bound.
 \end{frame}
