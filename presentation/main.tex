@@ -10,13 +10,14 @@
 \setbeamertemplate{footline}[text line]{%
     \parbox{\linewidth}{\vspace*{-24pt}\pageauthor\hfill\insertpagenumber}}
 
-% bibliography
-\usepackage[style=ieee]{biblatex}
-\bibliography{refs.bib}
-\renewcommand*{\bibfont}{\footnotesize}
+% % bibliography
+% \usepackage[style=ieee]{biblatex}
+% \bibliography{refs.bib}
+% \renewcommand*{\bibfont}{\footnotesize}
 
 % figures
 \usepackage{graphicx}
+\graphicspath{ {./figures/} }
 \usepackage{tcolorbox}
 \tcbset{fontupper=\small, fonttitle=\normalsize, boxsep=0.15mm, left=1mm, right=1mm, top=1mm, bottom=1mm}
 
@@ -44,6 +45,9 @@
     \tableofcontents
 \end{frame}
 
+\renewcommand{\pageauthor}{Shreyas Sinha}
+\include{./sections/introduction}
+
 \renewcommand{\pageauthor}{Author 1}
 \include{./sections/accessible_information}
 \include{./sections/holevo_bound}
@@ -60,9 +64,9 @@
 \include{./sections/super_additivity}
 \include{./sections/examples}
 
-\renewcommand{\pageauthor}{}
-\begin{frame}[plain, allowframebreaks]{References}
-    \printbibliography[heading=none]
-\end{frame}
+%\renewcommand{\pageauthor}{}
+%\begin{frame}[plain, allowframebreaks]{References}
+%    \printbibliography[heading=none]
+%\end{frame}
 
 \end{document}
