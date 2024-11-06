@@ -2,12 +2,12 @@
 
 \begin{frame}{Introduction}
     In this presentation, we will be discussing quantum channels and how they developed from classical channels. But before that, we need to define what quantum channels
-    are and what they operate on.
+    are and what they operate on. \\
     Quantum channels operate on Density Matrices, which are mathematical constructs that hold all information about a quantum state. They can be defined as:
     \begin{equation}
         \rho = \sum_{i}p_i | \psi_i \rangle \langle \psi_i |   
     \end{equation}
-    where $\psi_i$ is the $i^th$ state occuring with probability $p_i$
+    where $\psi_i$ is the $i^{th}$ state occuring with probability $p_i$
 \end{frame}
 
 \begin{frame}{Introduction}
@@ -20,8 +20,12 @@
 \end{frame}
 
 \begin{frame}
-    \includegraphics[scale=0.1]{channel2.png}
-    \includegraphics[scale=0.15]{channel1.png}
+    \begin{figure}
+        \includegraphics[scale=0.1]{channel2.png}
+        \includegraphics[scale=0.1]{channel1.png}
+        \caption{Illustrations of a quantum channel}
+    \end{figure}
+    
 \end{frame}
 
 \begin{frame}{Kraus Representation}
@@ -37,13 +41,36 @@
 \end{frame}
 
 \begin{frame}{Von Neumann Entropy}
-    
+    The quantum analogue of the classical entropy is the Von Neumann Entropy. It is defined on the density operator as:
+    \begin{equation}
+        S(\rho) = -Tr[\rho log(\rho)]
+    \end{equation}
+    Its maximum value is for the maximally mixed state and mimimum for a pure state.\\
+    Any quantum state can be spectrally decomposed to be written as $\sigma = \sum_{i}p_i | x_i \rangle \langle x_i |$ where ${x_i}$ are eigenvectors
+    and ${p_i}$ are eigenvalues. Some algebraic manipulation can show that the quantum entropy ($S(\sigma)$) will be equivalent to the classical entropy of
+    a probability distribution described by the eigenvalues:
+    \begin{equation}
+        S(\sigma) = H(p) = \sum_i p_i log(p_i)
+    \end{equation}
 \end{frame}
 
-\begin{frame}{Quantum Relative Entropy}
-    
+\begin{frame}{Other quantities}
+    Several other quantities are defined for quantum systems analogous to the classical ones. Many of their properties are similar to their classical counterparts,
+    but there are some striking exceptions as well. We define some of these here:
+    \begin{itemize}
+        \item Quantum Conditional Entropy
+        $$S(A|B) = S(\rho_AB) - S(\rho_B)$$
+        where $\rho_B$ is the system with $A$ traced out. Interestingly, this quantity can be negative, something which is not seen in its classical counterpart.
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Quantum Mutual Information}
-    
+\begin{frame}{Other quantities}
+    \begin{itemize}
+        \item Quantum Mutual Information
+        $$I(A:B) = S(\rho_A) + S(\rho_B) - S(\rho_AB)$$
+        Quantum mutual information has a greater upper bound (by 2 times) compared to its classical counterpart.
+        \item Quantum Relative Entropy
+        $$D(\rho || \sigma) = Tr[\rho (log(\rho) - log(\sigma))]$$
+        This is analogous to the classical Kullback-Liebler Divergence.
+    \end{itemize}
 \end{frame}
