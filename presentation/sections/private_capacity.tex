@@ -7,7 +7,7 @@ $$P(\mathcal{N}) = \max_{p_{U,X}(u,x)} \left[ I(U;Y) - I(U;Z) \right]$$
 \end{tcolorbox}
 
 \begin{figure}
-    \includegraphics[width=0.4\textwidth]{figures/wiretap_channel.png}
+    \includegraphics[width=0.4\textwidth]{figures/private_communication_wiretap_channel.png}
     \caption{Classical wiretap channel.}
 \end{figure}
 \end{frame}
@@ -32,6 +32,11 @@ The private capacity $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is defi
 \begin{tcolorbox}
 $$P(\mathcal{N}) = \max_{\rho_{XA'}} \left[ I(X;B)_\rho - I(X;E)_\rho \right]$$
 \end{tcolorbox}
+
+\begin{figure}
+    \includegraphics[width=0.4\textwidth]{figures/private_communication_quantum_channel.png}
+    \caption{Private communication through a quantum channel.}
+\end{figure}
 \end{frame}
 
 \begin{frame}{Properties: Private Capacity of a Quantum Channel}
@@ -39,7 +44,7 @@ $$P(\mathcal{N}) = \max_{\rho_{XA'}} \left[ I(X;B)_\rho - I(X;E)_\rho \right]$$
     \setlength{\itemsep}{1.5em}
     \item Non-negativity
     $$P(\mathcal{N}) \geq 0$$
-    \item Bounded by coherent information
+    \item Bounded by quantum capacity
     $$P(\mathcal{N}) \leq Q(\mathcal{N})$$
     \item Non-additivity
     $$P(\mathcal{N} \otimes \mathcal{M}) \neq P(\mathcal{N}) + P(\mathcal{M})$$
