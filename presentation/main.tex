@@ -17,10 +17,16 @@
 
 % figures
 \usepackage{graphicx}
+\usepackage{tcolorbox}
+\tcbset{fontupper=\small, fonttitle=\normalsize, boxsep=0.15mm, left=1mm, right=1mm, top=1mm, bottom=1mm}
 
 % maths
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
 
 % meta
 \title{Quantum Channels: Transition from Classical to Quantum Channels}
