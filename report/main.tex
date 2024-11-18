@@ -33,9 +33,18 @@
 % maths
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{mathtools}
 \allowdisplaybreaks
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 \newcommand{\raisedtilde}{\raisebox{0.5ex}{\texttildelow}}
+\DeclarePairedDelimiter\bra{\langle}{\rvert}
+\DeclarePairedDelimiter\ket{\lvert}{\rangle}
+\DeclarePairedDelimiterX\braket[2]{\langle}{\rangle}{#1\,\delimsize\vert\,\mathopen{}#2}
+
+% theorem
+\usepackage{xpatch}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\xpretocmd{\proof}{\setlength{\parindent}{0pt}}{}{}
 
 % meta
 \title{Quantum Channels: Transition from Classical to Quantum Channels}
@@ -48,11 +57,11 @@
 \maketitle
 \tableofcontents
 
-\renewcommand{\pageauthor}{Author 1}
+\renewcommand{\pageauthor}{Yash Seri}
 \include{./sections/accessible_information}
 \include{./sections/holevo_bound}
 
-\renewcommand{\pageauthor}{Author 2}
+\renewcommand{\pageauthor}{Raagav Ramakrishnan}
 \include{./sections/quantum_noiseless_channel}
 \include{./sections/classical_capacity}
 
