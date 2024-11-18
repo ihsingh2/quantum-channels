@@ -39,6 +39,22 @@ basic concepts in Quantum Information Theory. Since Quantum Systems work in a fu
 different way compared to their classical counterparts, we must define new quantities and
 constructs to take these into account.
 
+\subsection{Trace}
+It is helpful for us to introduce the \textbf{Trace} of a square operator. It is defined as:
+\begin{equation}
+    Tr[A] \equiv \displaystyle\sum_{i} \langle i | A | i \rangle
+\end{equation}
+where $A$ is an operator in the Hilbert space $\mathcal{H}$ and $\{|i\rangle\}$ is a complete
+orthonormal basis in $\mathcal{H}$.
+We note the following properties about the Trace:
+\begin{itemize}
+    \item Trace is Linear: $Tr[aA + bB] = aTr[A] + bTr[B]$ where $a$ and $b$ are scalars
+    \item Trace is independent of the choice of the basis, as long as it is complete and orthonormal
+    \item Trace is Cyclic: $Tr[ABC] = Tr[CAB]$
+\end{itemize} 
+
+DEFINE PARTIAL TRACE
+
 \subsection{States}
 
 In quantum mechanics, the state of a system encapsulates all the information needed to describe
@@ -51,38 +67,116 @@ in a two-level quantum system (qubit), a general pure state is represented as
 \( |\psi\rangle = \alpha |0\rangle + \beta |1\rangle \), where \( \alpha \) and \( \beta \) are
 complex coefficients satisfying \( |\alpha|^2 + |\beta|^2 = 1 \).
 
+Moreover, it is important to note that the trace of the square of a pure state is 1, or
+$Tr[| \psi \rangle^2] = 1$.
+
 However, in many real-world scenarios, systems are not isolated and can exist in \textbf{mixed states},
 where they are probabilistically distributed over multiple possible states. Mixed states are described
 by \textbf{density operators}, which generalize the concept of quantum states to incorporate
-probabilistic mixtures and interactions with external environments.
+probabilistic mixtures and interactions with external environments. Trace of squares of mixed states is
+not necessarily 1. $\rho = 0.5 |0 \rangle \langle 0| + 0.5 |1 \rangle \langle 1|$ is an example of such
+a mixed state.
 
 \subsection{Density Operators}
 
-In quantum mechanics and quantum information theory, the \textbf{density operator} (or \textbf{density matrix})
+As described above, the \textbf{density operator} (or \textbf{density matrix})
 is a mathematical tool that describes the state of a quantum system. Unlike a pure state, which
 represents a system with complete certainty about its state vector, the density operator allows
 for the representation of mixed states, where a system may exist in a probabilistic mixture of
 several possible states. This flexibility makes density operators essential for describing
 real-world quantum systems, particularly when dealing with noise, entanglement, and decoherence
-effects in quantum channels. Mathematically, a density operator \( \rho \) for a system is a
-positive semi-definite, Hermitian operator with trace 1, which encodes all observable properties
+effects in quantum channels. The density operator for a system encodes all observable properties
 of the system.
 
-The density operator $\rho$ corresponding to the ensemble $\mathcal{E} \{\equiv p_X(x), |\psi\rangle \}$
-is defined as:
+Mathematically, a density operator $\rho$ corresponding to the ensemble $\mathcal{E} \equiv
+\{p_X(x), |\psi\rangle \}_{x \in \mathcal{X}}$ is defined as:
 \begin{equation}
     \rho \equiv \displaystyle\sum_{x \in \mathcal{X} } p_X(x) |\psi \rangle \langle \psi|
 \end{equation}
-This definition of density operators can also be interpreted as the state of the system.
-
-\subsection{Trace}
+This definition of density operators can also be interpreted as the state of the system. One
+more way of understanding the density operator is to think of it as the expected state:
+\begin{equation}
+    \rho = \mathbb{E}_X \{ |\psi \rangle \langle \psi| \}
+\end{equation}
+The definition gives us a wide picture of the Density operator. As a consequence of the above,
+the Density operator has certain properties that it always satisfies. These are summarized here
+as follows:
+\begin{itemize}
+    \item Density operator has unit trace: $Tr[\rho] = 1$
+    \item Density operator is Hermitian: $\rho^\dagger = \rho$
+    \item Density operators are positive semi-definite, meaning $\langle \varphi  | \rho | \varphi \rangle
+    \forall \varphi$ which may be written as $\rho >= 0$
+\end{itemize}
+It is worth mentioning that every ensemble has a unique density operator, but the opposite
+is not necessarily true, and the same density operator could correspond to multiple ensembles.
 
 \subsection{Environment and Reference Systems}
 
-\subsection{Positivity and Complete Positivity}
+In studying quantum systems, we often introduce reference systems and environments to clarify
+how entanglement, decoherence, and information transfer occur. A reference system $R$ is often
+used as an ancillary(additional) system that helps track information about another system $A$.
+Reference systems are useful for defining quantities like coherent information and entanglement.
+By examining how the information in $A$ relates to the reference $R$, we gain insights into the
+entanglement properties and capacities of quantum channels or systems.
+
+In realistic scenarios,
+no quantum system is completely isolated. An environment $E$ represents everything outside the
+system of interest, which may interact with it and cause decoherence—the process by which a quantum
+system loses its coherence and behaves more classically. When analyzing quantum systems, we model
+the system and its environment as a combined entity as mixed states that allow us to study how
+noise and information loss occur in quantum channels.
+
+A reference system is often modelled as a \textbf{Product state}:
+\begin{definition}[Product State]
+    The Tensor Product of a state with another state (often the environment or a reference system).
+    \begin{equation}
+        \rho_{AB} = \rho_A \otimes \rho_B
+    \end{equation}
+\end{definition}
+The product state models all the interactions between the system and the environment. Besides modelling
+environment interaction, product states can also model interaction between two systems and give
+information about the correlation between them.
+\begin{definition}[Bipartite states]
+    A state is said to be Bipartite if it is a Tensor Product of two different states.
+\end{definition}
+
+This brings us to the related definition of separable states and entanglement:
+\begin{definition}[Separable states]
+    A bipartite state $\sigma_{AB}$ is said to be Separable if it can be written in the form:
+    \begin{equation}
+        \sigma_{AB} = \displaystyle\sum_{x} p_X(x)|\psi_x\rangle\langle\psi_x|_A \otimes |\phi_x\rangle\langle\phi_x|_B
+    \end{equation}
+    for some probability distribution $p_X(x)$ and sets $\{| \psi_x \rangle_A\}$ and $\{| \phi_x \rangle_B\}$ of pure states.
+\end{definition}
+
+\begin{definition}[Entanglement]
+    A state that is not separable is said to be entangled.
+\end{definition}
+
+IMAGES AND THE 3 STEP PROCESS
 
 \subsection{Channels as CPTP maps}
 
-\subsection{Kraus Representation}
+Now we have established most things required to begin our major discussion on Quantum Channels. Any
+Quantum channel is a model of a physical transformation. Hence, there are certain rules that such a
+channel must follow in order to make physical sense.
+
+\subsection{Choi-Kraus Representation and the Choi operator}
+
+The above definition (CPTP maps) of the quantum channel leads to a certain representation that turns
+out to be incredibly useful and insightful. We summarize this representation as the Choi-Kraus theorem:
+\begin{theorem}[Choi-Kraus Theorem]
+    Any map $\mathcal{N}_{A\rightarrow B}:\mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
+    (where $\mathcal{L}(\mathcal{H}_A)$ is the space of all Linear operators on $\mathcal{H}_A$) is Linear,
+    Completely Positive and Trace Preserving if and only if it has a Choi-Kraus decomposition as follows:
+    \begin{equation}
+        \mathcal{N}_{A \rightarrow B}(X_A) = \displaystyle\sum_{l=0}^{d-1} V_l X_A V_l^\dagger
+    \end{equation}
+    where $X_A \in \mathcal{L}(\mathcal{H}_A)$, $V_l \in \mathcal{L}(\mathcal{H_A}, \mathcal{H_B})$ 
+    $\forall l \in \{0,\dots,d-1\}$ with $d < dim(\mathcal{H}_A)dim(\mathcal{H}_B)$ and
+    \begin{equation}
+        \displaystyle\sum_{l=0}^{d-1} V_l^\dagger V_l = I_A
+    \end{equation}
+\end{theorem}
 
 \subsection{POVM Measurements}
