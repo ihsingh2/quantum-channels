@@ -1,0 +1,96 @@
+\section{Introduction}
+
+Quantum channels, fundamental in the study of quantum information theory,
+describe how quantum states evolve under various types of noise and interaction.
+These channels serve as models for real-world scenarios where quantum systems
+are exposed to external environments, resulting in state transformations that
+are often non-ideal. Quantum channels are central to understanding and developing
+quantum communication, computation, and cryptography, as they capture the
+limitations and potential of transferring quantum information through noisy or
+imperfect media.
+
+In quantum information theory, channels are typically categorized based on their
+capacities to transmit information. Just as in classical information theory, where
+the Shannon capacity limits the rate at which information can be reliably transmitted,
+quantum channels are analyzed through various capacity measures, each capturing
+different facets of information transfer. The primary capacities of interest include
+\textbf{quantum capacity}, \textbf{classical capacity}, and \textbf{private capacity},
+each reflecting the channel’s ability to transmit quantum information, classical
+information, or private (secure) information, respectively. These capacities vary
+depending on the nature and severity of the noise introduced by the channel, making
+it essential to understand the characteristics and limitations of each type.
+
+One of the distinctive aspects of quantum channels is that their capacities are not
+always additive, a property that contrasts with classical channels. The superadditivity
+phenomenon, where multiple channel uses jointly yield a higher capacity than the sum of
+individual capacities, adds a layer of complexity to the analysis. For example,
+entanglement-assisted strategies can enhance both classical and quantum transmission rates,
+exploiting the channel's underlying quantum mechanics to achieve greater efficiency. This
+superadditivity highlights the advantage of leveraging quantum properties like entanglement
+and coherence for information transmission.
+
+Our article explores the nature of quantum channels, and delves into the mathematical
+frameworks used to quantify their capacities. We discuss the fundamental concepts underlying
+quantum channel capacities, analyze the theoretical limits of information transmission, and
+cement theses ideas by taking a suitable example.
+
+Before we begin our discussion on channel capacities though, we need to first define some
+basic concepts in Quantum Information Theory. Since Quantum Systems work in a fundamentally
+different way compared to their classical counterparts, we must define new quantities and
+constructs to take these into account.
+
+\subsection{States}
+
+In quantum mechanics, the state of a system encapsulates all the information needed to describe
+it and predict the outcomes of measurements. For a simple, isolated quantum system, the state
+is typically represented as a \textbf{state vector} (or \textbf{ket}) \( |\psi\rangle \) in a
+complex Hilbert space \( \mathcal{H} \). This vector describes a \textbf{pure state}, where the
+system is in a specific, well-defined quantum state. Mathematically, pure states satisfy
+\( \langle \psi | \psi \rangle = 1 \), indicating that the vector is normalized. For example,
+in a two-level quantum system (qubit), a general pure state is represented as
+\( |\psi\rangle = \alpha |0\rangle + \beta |1\rangle \), where \( \alpha \) and \( \beta \) are
+complex coefficients satisfying \( |\alpha|^2 + |\beta|^2 = 1 \).
+
+However, in many real-world scenarios, systems are not isolated and can exist in \textbf{mixed states},
+where they are probabilistically distributed over multiple possible states. Mixed states are described
+by \textbf{density operators}, which generalize the concept of quantum states to incorporate
+probabilistic mixtures and interactions with external environments.
+
+\subsection{Density Operators}
+
+In quantum mechanics and quantum information theory, the \textbf{density operator} (or \textbf{density matrix})
+is a mathematical tool that describes the state of a quantum system. Unlike a pure state, which
+represents a system with complete certainty about its state vector, the density operator allows
+for the representation of mixed states, where a system may exist in a probabilistic mixture of
+several possible states. This flexibility makes density operators essential for describing
+real-world quantum systems, particularly when dealing with noise, entanglement, and decoherence
+effects in quantum channels. Mathematically, a density operator \( \rho \) for a system is a
+positive semi-definite, Hermitian operator with trace 1, which encodes all observable properties
+of the system.
+
+The density operator $\rho$ corresponding to the ensemble $\mathcal{E} \{\equiv p_X(x), |\psi\rangle \}$
+is defined as:
+\begin{equation}
+    \rho \equiv \displaystyle\sum_{x \in \mathcal{X} } p_X(x) |\psi \rangle \langle \psi|
+\end{equation}
+This definition of density operators can also be interpreted as the state of the system.
+
+\subsection{Trace}
+
+\subsection{Environment and References}
+
+\subsection{Positivity and Complete Positivity}
+
+\subsection{Channels as CPTP maps}
+
+\subsection{Kraus Representation}
+
+\subsection{POVM Measurements}
+
+\subsection{Von Neumann Entropy}
+
+\subsection{Conditional Entropy}
+
+\subsection{Mutual Information}
+
+\subsection{Relative Entropy}
