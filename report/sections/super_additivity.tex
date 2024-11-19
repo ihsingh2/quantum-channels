@@ -1,7 +1,53 @@
 \section{Super Additivity of Quantum Channels}
 
+Superadditivity in quantum information theory refers to the phenomenon where
+certain types of quantum capacities increase when multiple channels (or multiple
+uses of the same channel) are considered, rather than treating each channel
+(or use) independently. This property arises because quantum entanglement and
+correlations can enhance the effectiveness of the channel when used in a
+collective or joint manner. Superadditivity is a fundamental property that
+distinguishes quantum information theory from classical information theory.
+
+This Superadditivity is the result of entanglement and other exotic correlation
+phenomena that arises in quantum systems. Superadditivity enhances
+communication capabilities of quantum channels and allows more communication
+than what their classical counterparts could (sometimes even through
+zero capacity channels).
+
 \subsection{Classical Capacity}
+One manifestation of superadditivity appears in the classical capacity of quantum
+channels, particularly through the Holevo information. As we have seen before, the
+Holevo Information of a quantum channel is an upper bound on the classical information
+that can be transmitted through it. Also as we have seen before, Classical capacity
+has been defined in terms of the Holevo information. As a result, it can exhibit
+superadditivity when multiple channel uses are considered together. For example, when
+encoding information across multiple uses of the channel in an entangled way or by
+using complex encoding schemes, the total classical capacity often exceeds what would be
+achievable by simply using each channel separately. Thus, superadditivity allows us to
+exploit collective encoding and decoding strategies to maximize the amount of classical
+information extracted from quantum channels.
+
+Although it is worth noting that we don't yet know the precise mathematics behind why
+Holevo information is superadditive, we just know from counter examples that additivity
+is not the general case and super additivity can exist.
+
+Mathematically, we write the Holevo information of two channels acting in parallel as:
+\begin{equation}
+    \chi(\mathcal{N} \otimes \mathcal{M}) \geq \chi(\mathcal{N}) + \chi(\mathcal{M})
+\end{equation}
+Now, since classical capacity is:
+\begin{equation}
+    C(\mathcal{N}) = \lim_{n \rightarrow \infty }\frac{1}{n}\chi(\mathcal{N}^{\otimes n})
+\end{equation}
+For channel $\mathcal{N}\otimes\mathcal{M}$ we have:
+\begin{align}\begin{split}
+    C(\mathcal{N}\otimes\mathcal{M}) & = \lim_{n \rightarrow \infty }\frac{1}{n}\chi[(\mathcal{N}\otimes\mathcal{M})^{\otimes n}]\\
+    & \geq \lim_{n \rightarrow \infty }\frac{1}{n}[\chi(\mathcal{N}^{\otimes n}) + \chi(\mathcal{M}^{\otimes n})]\\
+    & = \lim_{n \rightarrow \infty }\frac{1}{n}\chi(\mathcal{N}^{\otimes n}) + \lim_{n \rightarrow \infty }\frac{1}{n}\chi(\mathcal{M}^{\otimes n})\\
+    & = C(\mathcal{N} + \mathcal{M})
+\end{split}\end{align}
 
 \subsection{Quantum Capacity}
+Coherent Information
 
 \subsection{Private Capacity}
