@@ -22,7 +22,7 @@ We would like to examine the properties of this defined measure, and compare it 
 \subsection{Properties of Private Capacity of a Wiretap Channel}
 
 \begin{theorem}[Non-negativity]
-The private capacity $P(\mathcal{N})$ of a wiretap channel is non-negative.
+The private capacity $P(\mathcal{N})$ of a wiretap channel $\mathcal{N}$ is non-negative.
 $$P(\mathcal{N}) \geq 0$$
 \end{theorem}
 
@@ -31,17 +31,18 @@ By setting the joint density $p_{U,X}(u, x)$ to the degenerate distribution $\de
 \end{proof}
 
 \begin{theorem}[Additivity]
-Let $\mathcal{N}_i$ represent a classical wiretap channel given by $p_{Y_i, Z_i | X_i}$. The private capacity of the combined classical channel $\mathcal{N}_1 \otimes \mathcal{N}_2$ is given by the sum of the individual private capacities of $\mathcal{N}_1$ and $\mathcal{N}_2$.
+Let $\mathcal{N}_i$ represent a classical wiretap channel given by $p_{Y_i, Z_i | X_i}$. The private capacity of the combined classical wiretap channel $\mathcal{N}_1 \otimes \mathcal{N}_2$ is given by the sum of the individual private capacities of $\mathcal{N}_1$ and $\mathcal{N}_2$.
 $$P(\mathcal{N}_1 \otimes \mathcal{N}_2) = P(\mathcal{N}_1) + P(\mathcal{N}_2)$$
 \end{theorem}
 
 \begin{proof}
-The inequality $P(\mathcal{N}_1 \otimes \mathcal{N}_2) \geq P(\mathcal{N}_1) + P(\mathcal{N}_2)$ follows from the fact that the two channels could be given by uncorrelated probability distributions. Since the maximization is over all possible probability distributions, the capacity would thus be atleast the throughput of the uncorrelated probability distributions, which is equal to the sum of the individual probability distributions.
+The inequality $P(\mathcal{N}_1 \otimes \mathcal{N}_2) \geq P(\mathcal{N}_1) + P(\mathcal{N}_2)$ follows from the fact that the two channels could be given by uncorrelated probability distributions. Since the maximization is over all possible probability distributions, the capacity would thus be atleast the throughput obtained with the uncorrelated probability distributions, which is equal to the sum of the individual probability distributions.
 
-In order to prove the reverse direction, we consider any probability distribution $p_{U, X_1, X_2}(u, x_1, x_2)$ for $P(\mathcal{N}_1 \otimes \mathcal{N}_2)$, where $X_1, X_2$ are the input random variables transmitted to the two channels. We can write the combined channel capacity as follows.
+In order to prove the other direction, we consider any probability distribution $p_{U, X_1, X_2}(u, x_1, x_2)$ for $P(\mathcal{N}_1 \otimes \mathcal{N}_2)$, where $X_1, X_2$ are the input random variables transmitted to the two channels. We can write the combined channel capacity as follows.
 
 \begin{align*}
-I(U; Y_1 Y_2) - I(U; Z_1 Z_2) &= I(U; Y_1) + I(U; Y_2 | Y_1) - I(U; Z_2) - I(U; Z_1 | Z_2) \\
+P(\mathcal{N}_1 \otimes \mathcal{N}_2) &= I(U; Y_1 Y_2) - I(U; Z_1 Z_2) \\
+&= I(U; Y_1) + I(U; Y_2 | Y_1) - I(U; Z_2) - I(U; Z_1 | Z_2) \\
 &= I(U; Y_1 | Z_2) - I(U; Z_1 | Z_2) + I(U; Y_2 | Y_1) - I(U; Z_2 | Y_1)
 \end{align*}
 
@@ -53,10 +54,10 @@ Consider the first two terms from the expanded form of combined channel capacity
 \begin{align*}
 I(U; Y_1 | Z_2) - I(U; Z_1 | Z_2) &= \sum_{z_2} p_{Z_2}(z_2) [I(U; Y_1 | Z_2 = z_2) - I(U; Z_1 | Z_2 = z_2)] \\
 &\leq \max_{z_2} [I(U; Y_1 | Z_2 = z_2) - I(U; Z_1 | Z_2 = z_2)] \\
-&\leq P(\mathcal{N}_1)
+&= P(\mathcal{N}_1)
 \end{align*}
 
-Similar argument yields the following relation.
+The last inequality holds because $U | Z_2$ can be viewed as an auxiliary random variable, resulting in the same form as observed in the definition of private capacity. Similar argument yields the following relation.
 $$I(U; Y_2 | Y_1) - I(U; Z_2 | Y_1) \leq P(\mathcal{N}_2)$$
 
 Combining the two relations proves the other side of the inequality. The two inequalities together establish the additivity relation.
@@ -75,7 +76,7 @@ P(\mathcal{N}^{\otimes k}) &= \sum_{i=1}^k P(\mathcal{N}) \\
 &= k P(\mathcal{N}_i)
 \end{align*}
 
-Using the additivity relation and the inductive hypothesis, we can prove by induction that the hypothesis holds for $k+1$.
+Using the additivity relation and the inductive hypothesis, we can prove that the hypothesis holds for $k+1$.
 \begin{align*}
 P(\mathcal{N}^{\otimes k} \otimes \mathcal{N}_{k+1}) &= P(\mathcal{N}^{\otimes k}) + P(\mathcal{N}_{k+1}) \\
 &= \sum_{i=1}^{k} P(\mathcal{N}_i) + P(\mathcal{N}_{k+1}) \\
@@ -83,13 +84,13 @@ P(\mathcal{N}^{\otimes k} \otimes \mathcal{N}_{k+1}) &= P(\mathcal{N}^{\otimes k
 &= (k+1) P(\mathcal{N})
 \end{align*}
 
-Moving the constant factor to the LHS and applying limits gives us the desired relation.
+Moving the constant factor to the LHS and applying limit gives us the desired relation.
 $$\lim_{n \rightarrow \infty} \frac{1}{n} P(\mathcal{N}^{\otimes n}) = P(\mathcal{N})$$
 \end{proof}
 
 \subsection{Private Capacity of a Quantum Channel}
 
-Consider a quantum channel $\mathcal{N}$ given by the operator $\mathcal{U}_{A' \rightarrow BE}^{\mathcal{N}}$. In the private communication model, Alice would like to establish classical correlations with Bob, without the channel's environment of the channel having access to these correlations. Let the following be the density matrix of the classical-quantum state she transmits to the channel.
+Consider a quantum channel $\mathcal{N}$ given by the operator $\mathcal{U}_{A' \rightarrow BE}^{\mathcal{N}}$. In the private communication model, Alice would like to establish classical correlations with Bob, without the environment of the channel having access to the correlations. Let the following be the density matrix of the classical-quantum state she transmits to the channel.
 
 $$\rho_{XA'} = \sum_{x} p_X(x) \ket{x}\bra{x}_X \otimes \rho_{A'}^x $$
 
@@ -98,6 +99,7 @@ The private capacity $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is defi
 \begin{definition}[Private Capacity of a Quantum Channel]
 The private information $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is defined as:
 $$P(\mathcal{N}) = \max_{\rho_{XA'}} \left[ I(X;B)_\rho - I(X;E)_\rho \right]$$
+where the term being maximized is called the private information of the state.
 \end{definition}
 
 We shall see that this definition of private capacity too satisifies non-negativity, but unlike the wiretap channel it violates the additivity relation.
@@ -111,12 +113,12 @@ We shall see that this definition of private capacity too satisifies non-negativ
 \subsection{Properties of Private Capacity of a Quantum Channel}
 
 \begin{theorem}[Non-negativity]
-The private capacity $P(\mathcal{N})$ of a quantum channel is non-negative.
+The private capacity $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is non-negative.
 $$P(\mathcal{N}) \geq 0$$
 \end{theorem}
 
 \begin{proof}
-Similar to the proof in the classical wiretap channel case, we can consider a degenerate input state $\rho_{XA'}$ of the form $\ket{0}\bra{0}_X \otimes \psi_{A'}$, where $\psi_{A'}$ is a pure state. The private information of this state is zero. Since the maximization is over all possible input states, the private capacity of the channel is guaranteed to be atleast zero, or non-negative.
+Similar to the proof in the classical wiretap channel case, we can consider a degenerate input $\rho_{XA'}$ of the form $\ket{0}\bra{0}_X \otimes \psi_{A'}$, where $\psi_{A'}$ is a pure state. The private information of this state is zero. Since the maximization is over all possible input states, the private capacity of the channel is guaranteed to be atleast zero, or non-negative.
 \end{proof}
 
 \begin{theorem}[Non-additivity]
@@ -125,7 +127,7 @@ $$P(\mathcal{N}_1 \otimes \mathcal{N}_2) \neq P(\mathcal{N}_1) + P(\mathcal{N}_2
 \end{theorem}
 
 \begin{proof}
-We construct a new channel $T_k^\mathcal{N}$ based on an arbitrary channel $\mathcal{N}$, such that $C(T_k^\mathcal{N})$ is close to $C(\mathcal{N})$.
+We will construct a new channel $T_k^\mathcal{N}$, on the basis of an arbitrary channel $\mathcal{N}$, such that $C(T_k^\mathcal{N})$ is close to $C(\mathcal{N})$.
 $$C(\mathcal{N}) \leq C(T_k^\mathcal{N}) \leq C(\mathcal{N}) + \delta(k)$$
 
 Further, consider a 50\% erasure channel $\mathcal{A}$. The quantum capacity of the combined channel $Q(T_k^N \otimes \mathcal{A})$ satisfies the following relation with the entanglement-assisted capacity $Q_E(\mathcal{N})$ \cite{PhysRevLett.83.3081}.
@@ -134,12 +136,12 @@ $$Q(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q_E(\mathcal{N})$$
 For channels $\mathcal{N}$ such that $Q_E(\mathcal{N}) > C(\mathcal{N})$, we can combine the two results as follows.
 $$Q(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N})$$
 
-As we shall prove in the subsequent section, the classical, private and quantum capacities of a quantum channel $\mathcal{N}$ are related as $Q(\mathcal{N}) \leq P(\mathcal{N}) \leq C(\mathcal{N})$. We can use this fact to write the following.
+As we shall prove in the subsequent section, the classical, private and quantum capacities of a quantum channel $\mathcal{N}$ are related as $C(\mathcal{N}) \geq P(\mathcal{N}) \geq Q(\mathcal{N})$. We can use this fact to write the following.
 
 $$P(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N}) \geq P(T_k^\mathcal{N})$$
 
-Since erasure channels have zero private and quantum capacities, when $p \geq 1/2$, $P(\mathcal{A}) = Q(\mathcal{A}) = 0$ \cite{PhysRevLett.78.3217}. This gives us the following result.
+Since erasure channels have zero private and quantum capacities, when $p \geq 1/2$, $P(\mathcal{A}) = Q(\mathcal{A}) = 0$ \cite{PhysRevLett.78.3217}. This gives us the following result, which violates the possibility of private capacity being an additive measure.
 $$P(T_k^\mathcal{N} \otimes \mathcal{A}) > P(T_k^\mathcal{N}) + P(\mathcal{A})$$
 
-Thus, the private capacity $P(\mathcal{N})$ of the constructed quantum channel is non-additive.
+Thus, the private capacity $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is non-additive.
 \end{proof}

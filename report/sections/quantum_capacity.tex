@@ -7,7 +7,7 @@ We now concern ourselves with the transmission of quantum states. Recall that bo
 Suppose Alice prepares a pure state $\phi_{AA'}$ and inputs the system $A'$ to a quantum channel $\mathcal{N}_{A' \rightarrow B}$. This transmission gives us the bipartite state $\rho_{AB} = \mathcal{N}_{A' \rightarrow B} (\phi_{AA'})$. An intuitive way of measuring the information throughput is to measure how uncertain the receiver is of the input given the received quantum state. This aligns with the definiton of conditional entropy. Since we are concerned with reducing the conditional entropy, we can define an analogous measure that can be maximized instead.
 
 \begin{definition}[Coherent Information of a Quantum State]
-The coherent information of a state that arises from the channel is defined as:
+The coherent information of a bipartite state $\rho_{AB} \in \mathcal{D}(\mathcal{H}_A \otimes \mathcal{H}_B)$ is defined as:
 $$I(A \rangle B)_{\rho} = S(B)_{\rho} - S(AB)_{\rho}$$
 \end{definition}
 
@@ -28,12 +28,12 @@ $$Q(\mathcal{N}) = \max_{\phi_{AA'}} \left[ S(B)_\psi - S(E)_\psi \right]$$
     \caption{Quantum communication through a quantum channel \cite{Gyongyosi_2018}. The channel is represented as the unitary transformation. $P$ refers to the reference system or the purification state. The outputs received by Bob (first) and the environment (second) can be computed using the partial trace operator.}
 \end{figure}
 
-We shall see that this definition of quantum capacity satisifies non-negativity, but violates the additivity relation similar to private capacity. We would then examine a special class of quantum channels that satisfy the additivity relation for both private and quantum capacity. Moreover, their private and quantum capacities happen to be always equal.
+We shall see that this definition of quantum capacity satisifies non-negativity, but violates the additivity relation similar to private capacity. We would then examine a special class of quantum channels that satisfies the additive relation for both private and quantum capacity. Moreover, their private and quantum capacities happen to be always equal.
 
 \subsection{Properties of Quantum Capacity}
 
 \begin{theorem}[Non-negativity]
-The quantum capacity $Q(\mathcal{N})$ of a quantum channel is non-negative.
+The quantum capacity $Q(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is non-negative.
 $$Q(\mathcal{N}) \geq 0$$
 \end{theorem}
 
@@ -80,6 +80,7 @@ $$Q(\mathcal{N}) \leq P(\mathcal{N}) \leq C(\mathcal{N})$$
 The reason why $P(\mathcal{N}) \leq C(\mathcal{N})$ holds is easy to see. In both classical and private communication models, our objective is to transmit classical information. Private communication is a specific case of the lesser constrained classical communication through quantum channels. Thus, the classical capacity cannot be lesser than the private capacity.
 
 For proving the other half of the inequality, i.e. $Q(\mathcal{N}) \leq P(\mathcal{N})$, we will consider a pure state that maximizes the quantum capacity. Let $\sigma_{XA'}$ denote the augmented classical-quantum state that correlates with index $x$.
+
 $$\sigma_{XA'} = \sum_{x} p_X(x) \ket{x}\bra{x} \otimes \ket{\phi_x}\bra{\phi_x}_{A'}$$
 
 \begin{align*}
