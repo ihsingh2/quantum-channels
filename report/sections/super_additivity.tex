@@ -32,20 +32,20 @@ Holevo information is superadditive, we just know from counter examples that add
 is not the general case and super additivity can exist.
 
 Mathematically, we write the Holevo information of two channels acting in parallel as:
-\begin{equation}
+\begin{equation*}
     \chi(\mathcal{N} \otimes \mathcal{M}) \geq \chi(\mathcal{N}) + \chi(\mathcal{M})
-\end{equation}
+\end{equation*}
 Now, since classical capacity is:
-\begin{equation}
+\begin{equation*}
     C(\mathcal{N}) = \lim_{n \rightarrow \infty }\frac{1}{n}\chi(\mathcal{N}^{\otimes n})
-\end{equation}
+\end{equation*}
 For channel $\mathcal{N}\otimes\mathcal{M}$ we have:
-\begin{align}\begin{split}
+\begin{align*}\begin{split}
     C(\mathcal{N}\otimes\mathcal{M}) & = \lim_{n \rightarrow \infty }\frac{1}{n}\chi[(\mathcal{N}\otimes\mathcal{M})^{\otimes n}]\\
     & \geq \lim_{n \rightarrow \infty }\frac{1}{n}[\chi(\mathcal{N}^{\otimes n}) + \chi(\mathcal{M}^{\otimes n})]\\
     & = \lim_{n \rightarrow \infty }\frac{1}{n}\chi(\mathcal{N}^{\otimes n}) + \lim_{n \rightarrow \infty }\frac{1}{n}\chi(\mathcal{M}^{\otimes n})\\
     & = C(\mathcal{N} + \mathcal{M})
-\end{split}\end{align}
+\end{split}\end{align*}
 As the math clearly demonstrates, the Classical capacity is superadditive as a consequence
 of the superadditivity of the Holevo information.
 
@@ -60,9 +60,9 @@ Since coherent information itself can be superadditive, the overall quantum capa
 channel may similarly display superadditivity.
 
 Mathematically, we may write this as:
-\begin{equation}
+\begin{equation*}
     Q(\mathcal{N} \otimes \mathcal{M}) \geq Q(\mathcal{N}) + Q(\mathcal{M})
-\end{equation}
+\end{equation*}
 
 One classical analogy would be to consider a system where combining two noisy communication
 lines produces a more reliable transmission than would be expected from their individual
@@ -77,9 +77,9 @@ possibility for two channels with limited private capacity to combine as a tenso
 to have private capacity greater than the sum of the two. We do not know the exact formulation of
 this relation as of now, so we write:
 
-\begin{equation}
+\begin{equation*}
     P^?(\mathcal{N} \otimes \mathcal{M}) > P^?(\mathcal{N}) + P^?(\mathcal{M})
-\end{equation}
+\end{equation*}
 
 The superadditivity of quantum channels is still a pretty unexplored topic, and there are many open
 questions still unanswered.

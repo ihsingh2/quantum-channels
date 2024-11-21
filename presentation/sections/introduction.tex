@@ -4,9 +4,9 @@
     In this presentation, we will be discussing quantum channels and how they developed from classical channels. But before that, we need to define what quantum channels
     are and what they operate on. \\
     Quantum channels operate on Density Matrices, which are mathematical constructs that hold all information about a quantum state. They can be defined as:
-    \begin{equation}
+    \begin{equation*}
         \rho = \sum_{i}p_i | \psi_i \rangle \langle \psi_i |   
-    \end{equation}
+    \end{equation*}
     where $\psi_i$ is the $i^{th}$ state occuring with probability $p_i$
 \end{frame}
 
@@ -19,30 +19,20 @@
     These three steps have been illustrated in the following figures.
 \end{frame}
 
-\begin{frame}{Quantum channel conditions}
-    Three conditions:
-    \begin{description}
-        \item[Linearity] {
-            A quantum channel must satisfy:
-            \begin{equation}
+\begin{frame}{Conditions for a Quantum Channel}
+    A quantum channel must satisfy the following three conditions:
+    \begin{itemize}
+        \item Linearity
+            \begin{equation*}
                 \mathcal{N}(\alpha X_A + \beta Y_A) = \alpha \mathcal{N}(X_A) + \beta \mathcal{N}(Y_A)
-            \end{equation}
-            }
-        \item[Complete Positivity] {
-            It must have complete positivity:
-            \begin{definition}[Complete Positivity]
-                A linear map $\mathcal{M} : \mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
-                is said to be completely positive if $id_R \otimes \mathcal{M}$ is positive map for a reference
-                system $R$ of arbitrary size.
-            \end{definition}
-        }
-        \item[Trace Preserving] {
-            Channel must be trace preserving
-            \begin{definition}[Trace Preservation]
-                A map $\mathcal{N}$ is trace preserving if $Tr[X_A] = Tr[\mathcal{N}(X_A)]$ for all input $X_A \in \mathcal{L}(\mathcal{H}_A)$
-            \end{definition}
-        }
-    \end{description}
+            \end{equation*}
+        \item Complete Positivity \\
+            A linear map $\mathcal{M} : \mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
+            is said to be completely positive if $id_R \otimes \mathcal{M}$ is positive map for a reference
+            system $R$ of arbitrary size.
+        \item Trace Preserving \\
+            A map $\mathcal{N}$ is trace preserving if $Tr[X_A] = Tr[\mathcal{N}(X_A)]$, for all input $X_A \in \mathcal{L}(\mathcal{H}_A)$.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Choi Operator}
@@ -54,14 +44,14 @@
         be a linear map (written also as $N_{A\rightarrow B}$). The Choi operator corresponding
         to $N_{A\rightarrow B}$ and the bases $\{| i\rangle_R \}$ and $\{|i\rangle_A \}$ is defined
         as the following operator:
-        \begin{equation}
+        \begin{equation*}
             (id_R \otimes \mathcal{N}_{A \rightarrow B})(| \Gamma \rangle\langle \Gamma |_{RA})
             = \displaystyle\sum_{i,j = 0}^{d_A-1}| i \rangle\langle j |_R \otimes \mathcal{N}_{A \rightarrow B}(| i \rangle\langle j |_A)
-        \end{equation}
+        \end{equation*}
         where $d_A \equiv dim(\mathcal{H}_A)$ and $| \Gamma \rangle_{RA}$ is the unnormalized maximally entangled vector:
-        \begin{equation}
+        \begin{equation*}
             | \Gamma \rangle_{RA} \equiv \displaystyle\sum_{i=0}^{d_A - 1} | i \rangle_R \otimes | i \rangle_A
-        \end{equation}
+        \end{equation*}
     \end{definition}
 \end{frame}
 
@@ -76,9 +66,9 @@
 \begin{frame}{Kraus Representation}
     Quantum channels are often represented in what is called the Kraus form (or the Choi-Kraus representation). In this form, quantum channels can be defined
     as linear combination in the following way:
-    \begin{equation}
+    \begin{equation*}
         \mathcal{N}(\rho) = \sum_i K_i \rho K_i^\dagger 
-    \end{equation}
+    \end{equation*}
     where $\sum_i K_i^\dagger K_i = \mathbb{I} $\\
     The Kraus representation is very useful in as a tool for analysing quantum channels, and makes several problens easier to solve. Kraus operators and their
     uses show up at many useful places throughout Quantum information theory. It makes channels easier to understand as well, by decomposing them into several
@@ -87,16 +77,16 @@
 
 \begin{frame}{Von Neumann Entropy}
     The quantum analogue of the classical entropy is the Von Neumann Entropy. It is defined on the density operator as:
-    \begin{equation}
+    \begin{equation*}
         S(\rho) = -Tr[\rho log(\rho)]
-    \end{equation}
+    \end{equation*}
     Its maximum value is for the maximally mixed state and mimimum for a pure state.\\
     Any quantum state can be spectrally decomposed to be written as $\sigma = \sum_{i}p_i | x_i \rangle \langle x_i |$ where ${x_i}$ are eigenvectors
     and ${p_i}$ are eigenvalues. Some algebraic manipulation can show that the quantum entropy ($S(\sigma)$) will be equivalent to the classical entropy of
     a probability distribution described by the eigenvalues:
-    \begin{equation}
+    \begin{equation*}
         S(\sigma) = H(p) = \sum_i p_i log(p_i)
-    \end{equation}
+    \end{equation*}
 \end{frame}
 
 \begin{frame}{Other quantities}

@@ -3,9 +3,11 @@
 \subsection{Definition of Classical Capacity}
 The classical capacity \( C(\mathcal{N}) \)  of a quantum channel \( \mathcal{N} \) quantifies the maximum amount of classical information it can transmit with an arbitrarily low error as the number of channel uses goes to infinity. It's measured in \textit{bits per channel use}
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.75\textwidth]{figures/properties_channels.png}
-\end{center}
+    \caption{Properties of the Quantum Channel \cite{Gyongyosi2012PropertiesOT}}
+\end{figure}
 
 \textbf{Practical Example:} Consider a noisy quantum channel, such as a fiber optic cable carrying photons. Each photon represents a \textit{quantum state}, which carries the classical information like \textit{0}, \textit{1}, or a \textit{superposiition} of values. In the real world, however, these cables introduce noise. 
 \begin{itemize}
@@ -26,9 +28,11 @@ where:
     \item \(\chi(\mathcal{N})\): The Holevo quantity, an upper bound on the information that can be transmitted.
 \end{itemize}
 
-\begin{center}
+\begin{figure}[H]
+    \centering
     \includegraphics[width=0.75\textwidth]{figures/classical_cap.png}
-\end{center}
+    \caption{Classical Capacity Illustration \cite{6773024}}
+\end{figure}
 
 \subsubsection{The Holevo Quantity}
 The Holevo quantity \(\chi\) quantifies the classical information extractable from quantum states. For a quantum channel \(\mathcal{N}\) and a classical ensemble of quantum states \(\{p_i, \rho_i\}\), it is defined as:
@@ -74,16 +78,3 @@ Determining \(C(\mathcal{N})\) involves:
 
 \subsection{Summary}
 The classical capacity \(C(\mathcal{N})\) measures the maximum reliable classical information transmission over a quantum channel. While the Holevo quantity provides theoretical limits, practical systems use approximations and error correction to approach these limits.
-
-\subsection{Classical Capacity Citations}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\textwidth]{figures/properties_channels.png}
-    \caption{Properties of the Quantum Channel \cite{Gyongyosi2012PropertiesOT}}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\textwidth]{figures/classical_cap.png}
-    \caption{Classical Capacity Illustration \cite{6773024}}
-\end{figure}

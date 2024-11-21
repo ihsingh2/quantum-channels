@@ -41,9 +41,9 @@ constructs to take these into account.
 
 \subsection{Trace}
 It is helpful for us to introduce the \textbf{Trace} of a square operator. It is defined as:
-\begin{equation}
+\begin{equation*}
     Tr[A] \equiv \displaystyle\sum_{i} \langle i | A | i \rangle
-\end{equation}
+\end{equation*}
 where $A$ is an operator in the Hilbert space $\mathcal{H}$ and $\{|i\rangle\}$ is a complete
 orthonormal basis in $\mathcal{H}$.
 We note the following properties about the Trace:
@@ -80,9 +80,9 @@ or not:
 
 \begin{definition}[Purity]
     The purity of a state $P[\rho]$ is defined as:
-    \begin{equation}
+    \begin{equation*}
         P[\rho] = Tr[\rho^\dagger\rho] = Tr[\rho^2]
-    \end{equation}
+    \end{equation*}
     $P[\rho] = 1$ if $\rho$ is pure and $P[\rho] < 1$ if $\rho$ is NOT pure.
 \end{definition}
 
@@ -99,14 +99,14 @@ of the system.
 
 Mathematically, a density operator $\rho$ corresponding to the ensemble $\mathcal{E} \equiv
 \{p_X(x), |\psi\rangle \}_{x \in \mathcal{X}}$ is defined as:
-\begin{equation}
+\begin{equation*}
     \rho \equiv \displaystyle\sum_{x \in \mathcal{X} } p_X(x) |\psi \rangle \langle \psi|
-\end{equation}
+\end{equation*}
 This definition of density operators can also be interpreted as the state of the system. One
 more way of understanding the density operator is to think of it as the expected state:
-\begin{equation}
+\begin{equation*}
     \rho = \mathbb{E}_X \{ |\psi \rangle \langle \psi| \}
-\end{equation}
+\end{equation*}
 The definition gives us a wide picture of the Density operator. As a consequence of the above,
 the Density operator has certain properties that it always satisfies. These are summarized here
 as follows:
@@ -138,9 +138,9 @@ noise and information loss occur in quantum channels.
 A reference system is often modelled as a \textbf{Product state}:
 \begin{definition}[Product State]
     The Tensor Product of a state with another state (often the environment or a reference system).
-    \begin{equation}
+    \begin{equation*}
         \rho_{AB} = \rho_A \otimes \rho_B
-    \end{equation}
+    \end{equation*}
 \end{definition}
 The product state models all the interactions between the system and the environment. Besides modelling
 environment interaction, product states can also model interaction between two systems and give
@@ -152,9 +152,9 @@ information about the correlation between them.
 This brings us to the related definition of separable states and entanglement:
 \begin{definition}[Separable states]
     A bipartite state $\sigma_{AB}$ is said to be Separable if it can be written in the form:
-    \begin{equation}
+    \begin{equation*}
         \sigma_{AB} = \displaystyle\sum_{x} p_X(x)|\psi_x\rangle\langle\psi_x|_A \otimes |\phi_x\rangle\langle\phi_x|_B
-    \end{equation}
+    \end{equation*}
     for some probability distribution $p_X(x)$ and sets $\{| \psi_x \rangle_A\}$ and $\{| \phi_x \rangle_B\}$ of pure states.
 \end{definition}
 
@@ -167,9 +167,9 @@ One more tool that is often used in quantum information theory is the Partial Tr
 \begin{definition}[Partial Trace]
     Let $X_{AB}$ be a square operator acting on the tensor product Hilbert Space $\mathcal{H}_A\otimes \mathcal{H}_B$
     and let $\{| l \rangle_B\}$ be an orthonormal basis for $\mathcal{H}_B$. Then, the partial trace over $B$ is:
-    \begin{equation}
+    \begin{equation*}
         Tr_B[X_{AB}] \equiv \displaystyle\sum_{l} (I_A \otimes \langle l |_B) X_{AB} (I_A \otimes | l \rangle_B)
-    \end{equation}
+    \end{equation*}
 \end{definition}
 
 The partial trace effectively "traces out" one part of the system, leaving us with the "local" density operator to work with.
@@ -190,14 +190,14 @@ measurements as POVMs (Positive Operator Valuled Measures). We define these as f
 \begin{definition}[POVM]
     A Positive Operator Valued Measure (POVM) is a set $\{\Lambda_j\}_j$ of operators that satisfy
     non-negativity and completeness:
-    \begin{align}
+    \begin{align*}
         \forall j : \Lambda_j \geq 0 \\
         \displaystyle\sum_{j} \Lambda_j = I
-    \end{align}
+    \end{align*}
     and the probability of obtaining outcome $j$ is:
-    \begin{equation}
+    \begin{equation*}
         \langle \psi | \Lambda_j | \psi \rangle
-    \end{equation}
+    \end{equation*}
 \end{definition}
 
 \begin{figure}
@@ -232,9 +232,9 @@ apply 3 restrictions on it:
         for now.
         
         Hence, a quantum channel must satisfy:
-        \begin{equation}
+        \begin{equation*}
             \mathcal{N}(\alpha X_A + \beta Y_A) = \alpha \mathcal{N}(X_A) + \beta \mathcal{N}(Y_A)
-        \end{equation}
+        \end{equation*}
         }
     \item[Complete Positivity] {
         Since $\mathcal{N}$ maps density operator to density operator, the output of this map must
@@ -279,14 +279,14 @@ out to be incredibly useful and insightful. We summarize this representation as 
     Any map $\mathcal{N}_{A\rightarrow B}:\mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
     (where $\mathcal{L}(\mathcal{H}_A)$ is the space of all Linear operators on $\mathcal{H}_A$) is Linear,
     Completely Positive and Trace Preserving if and only if it has a Choi-Kraus decomposition as follows:
-    \begin{equation}
+    \begin{equation*}
         \mathcal{N}_{A \rightarrow B}(X_A) = \displaystyle\sum_{l=0}^{d-1} V_l X_A V_l^\dagger
-    \end{equation}
+    \end{equation*}
     where $X_A \in \mathcal{L}(\mathcal{H}_A)$, $V_l \in \mathcal{L}(\mathcal{H_A}, \mathcal{H_B})$ 
     $\forall l \in \{0,\dots,d-1\}$ with $d < dim(\mathcal{H}_A)dim(\mathcal{H}_B)$ and
-    \begin{equation}
+    \begin{equation*}
         \displaystyle\sum_{l=0}^{d-1} V_l^\dagger V_l = I_A
-    \end{equation}
+    \end{equation*}
 \end{theorem}
 
 Before we provide an outline of the proof, we define Choi operators:
@@ -299,14 +299,14 @@ Before we provide an outline of the proof, we define Choi operators:
     be a linear map (written also as $N_{A\rightarrow B}$). The Choi operator corresponding
     to $N_{A\rightarrow B}$ and the bases $\{| i\rangle_R \}$ and $\{|i\rangle_A \}$ is defined
     as the following operator:
-    \begin{equation}
+    \begin{equation*}
         (id_R \otimes \mathcal{N}_{A \rightarrow B})(| \Gamma \rangle\langle \Gamma |_{RA})
         = \displaystyle\sum_{i,j = 0}^{d_A-1}| i \rangle\langle j |_R \otimes \mathcal{N}_{A \rightarrow B}(| i \rangle\langle j |_A)
-    \end{equation}
+    \end{equation*}
     where $d_A \equiv dim(\mathcal{H}_A)$ and $| \Gamma \rangle_{RA}$ is the unnormalized maximally entangled vector:
-    \begin{equation}
+    \begin{equation*}
         | \Gamma \rangle_{RA} \equiv \displaystyle\sum_{i=0}^{d_A - 1} | i \rangle_R \otimes | i \rangle_A
-    \end{equation}
+    \end{equation*}
 \end{definition}
 
 The Choi operator is a profound and very useful tool. The very first thing that we may state
