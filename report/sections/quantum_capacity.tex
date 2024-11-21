@@ -4,7 +4,7 @@
 
 We now concern ourselves with the transmission of quantum states. Recall that both classical and private communication models concerned themselves with reliable transmission of classical bits. This was typically modelled with orthogonal basis states. However, transmission of arbitrary quantum states involve dealing with more complex phenomenon such as entanglement.
 
-Suppose Alice prepares a pure state $\phi_{AA'}$ and inputs the system $A'$ to a quantum channel $\mathcal{N}_{A' \rightarrow B}$. This transmission gives us the bipartite state $\rho_{AB} = \mathcal{N}_{A' \rightarrow B} (\phi_{AA'})$. An intuitive way of measuring the information throughput is to measure how uncertain the receiver is of the input given the received quantum states. This aligns with the definiton of conditional entropy. Since we concerned with reducing the conditional entropy, we can define an analogous measure that we seek to maximize instead.
+Suppose Alice prepares a pure state $\phi_{AA'}$ and inputs the system $A'$ to a quantum channel $\mathcal{N}_{A' \rightarrow B}$. This transmission gives us the bipartite state $\rho_{AB} = \mathcal{N}_{A' \rightarrow B} (\phi_{AA'})$. An intuitive way of measuring the information throughput is to measure how uncertain the receiver is of the input given the received quantum state. This aligns with the definiton of conditional entropy. Since we are concerned with reducing the conditional entropy, we can define an analogous measure that can be maximized instead.
 
 \begin{definition}[Coherent Information of a Quantum State]
 The coherent information of a state that arises from the channel is defined as:
@@ -25,10 +25,10 @@ $$Q(\mathcal{N}) = \max_{\phi_{AA'}} \left[ S(B)_\psi - S(E)_\psi \right]$$
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/quantum_communication_quantum_channel.png}
-    \caption{Quantum communication through a quantum channel \cite{Gyongyosi_2018}.}
+    \caption{Quantum communication through a quantum channel \cite{Gyongyosi_2018}. The channel is represented as the unitary transformation. $P$ refers to the reference system or the purification state. The outputs received by Bob (first) and the environment (second) can be computed using the partial trace operator.}
 \end{figure}
 
-We shall see that this definition of quantum capacity satisifies non-negativity, but violates the additivity relation similar to private capacity. We would further examine a special class of quantum channels that satisfy the additivity relation.
+We shall see that this definition of quantum capacity satisifies non-negativity, but violates the additivity relation similar to private capacity. We would then examine a special class of quantum channels that satisfy the additivity relation for both private and quantum capacity. Moreover, their private and quantum capacities happen to be always equal.
 
 \subsection{Properties of Quantum Capacity}
 
@@ -84,13 +84,16 @@ $$\sigma_{XA'} = \sum_{x} p_X(x) \ket{x}\bra{x} \otimes \ket{\phi_x}\bra{\phi_x}
 
 \begin{align*}
 Q(\mathcal{N}) &= \max_{\rho} \left[ S(B)_{\rho} - S(E)_{\rho} \right] \\
-&= S(B)_{\sigma} - S(E)_{\sigma}\\
-&= S(B)_{\sigma} - S(B|X)_{\sigma} - S(E)_{\sigma} + S(B|X)_{\sigma}\\
+&= S(B)_{\sigma} - S(E)_{\sigma} \\
+&= S(B)_{\sigma} - S(B|X)_{\sigma} - S(E)_{\sigma} + S(B|X)_{\sigma} \\
+&= I(X;B)_{\sigma} - S(E)_{\sigma} + S(E|X)_{\sigma} \\
 &= I(X;B)_{\sigma} - I(X;E)_{\sigma} \\
 &\leq \max_{\rho} \left[ I(X;B)_{\rho} - I(X;E)_{\rho} \right] \\
-&\leq P(\mathcal{N})
+&= P(\mathcal{N})
 \end{align*}
 \end{proof}
+
+The first equality is by definition of quantum capacity. The second equality is by construction of the quantum state. The fourth equality is by the definition of mutual information and by the fact that $\sigma$ on systems $B$ and $E$ is pure when conditioned on $X$. The fifth equality is by the definition of mutual information. The last equality is by the definition of private capacity.
 
 \subsection{Degradable Quantum Channels}
 
@@ -99,11 +102,11 @@ A channel $\mathcal{N}: \mathcal{H}_A \rightarrow \mathcal{H}_B$ can be defined 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/degradable_quantum_channel.png}
-    \caption{The concept of a degradable quantum channel \cite{Gyongyosi2012PropertiesOT}. The environment state can be simulated by the application of the degrading channel.}
+    \caption{The concept of a degradable quantum channel \cite{Gyongyosi2012PropertiesOT}. The environment state can be simulated by the application of the degrading channel on the quantum state received by Bob.}
 \end{figure}
 
 \begin{definition}[Degradable Quantum Channel]
-A channel $\mathcal{N}$ is called degradable when it may be degraded to its complementary channel $\mathcal{N}^c$, i.e. when there exists a CPTP map $T: \mathcal{H}_B \rightarrow \mathcal{H}_E$ such that
+A channel $\mathcal{N}: \mathcal{H}_A \rightarrow \mathcal{H}_B$ is called degradable when it may be degraded to its complementary channel $\mathcal{N}^c: \mathcal{H}_A \rightarrow \mathcal{H}_E$, i.e. when there exists a CPTP map $T: \mathcal{H}_B \rightarrow \mathcal{H}_E$ such that
 $$\mathcal{N}^c = T \circ \mathcal{N}$$
 \end{definition}
 

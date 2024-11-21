@@ -3,10 +3,7 @@
 \begin{frame}{Quantum Capacity of a Quantum Channel}
 The quantity capacity $Q(\mathcal{N})$ of a quantum channel is defined as follows (where $\ket{\psi} = U^{\mathcal{N}}_{A' \rightarrow BE} \ket{\phi}_{AA'}$).
 \begin{tcolorbox}
-\begin{align*}
-Q(\mathcal{N}) &= \max_{\phi_{AA'}} \left[ S(B)_\rho - S(AB)_\rho \right] \\
-&= \max_{\phi_{AA'}} \left[ S(B)_\psi - S(E)_\psi \right]
-\end{align*}
+$$Q(\mathcal{N}) = \max_{\phi_{AA'}} \left[ S(B)_\rho - S(AB)_\rho \right]$$
 \end{tcolorbox}
 
 \begin{figure}
@@ -27,16 +24,28 @@ Q(\mathcal{N}) &= \max_{\phi_{AA'}} \left[ S(B)_\rho - S(AB)_\rho \right] \\
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Proof: Relation with other capacities}
-We will consider a pure state that maximizes the quantum capacity. Let $\sigma_{XA'}$ denote the augmented classical-quantum state that correlates with index $x$.
-$$\sigma_{XA'} = \sum_{x} p_X(x) \ket{x}\bra{x} \otimes \ket{\phi_x}\bra{\phi_x}_{A'}$$
-
+\begin{frame}{Degradable Quantum Channels}
+A channel $\mathcal{N}: \mathcal{H}_A \rightarrow \mathcal{H}_B$ is called degradable when it may be degraded to its complementary channel $\mathcal{N}^c: \mathcal{H}_A \rightarrow \mathcal{H}_E$, i.e. when there exists a CPTP map $T: \mathcal{H}_B \rightarrow \mathcal{H}_E$ such that
+\begin{tcolorbox}
 \begin{align*}
-Q(\mathcal{N}) &= \max_{\rho} \left[ S(B)_{\rho} - S(E)_{\rho} \right] \\
-&= S(B)_{\sigma} - S(E)_{\sigma}\\
-&= S(B)_{\sigma} - S(B|X)_{\sigma} - S(E)_{\sigma} + S(B|X)_{\sigma}\\
-&= I(X;B)_{\sigma} - I(X;E)_{\sigma} \\
-&\leq \max_{\rho} \left[ I(X;B)_{\rho} - I(X;E)_{\rho} \right] \\
-&\leq P(\mathcal{N})
+\mathcal{N}^c = T \circ \mathcal{N}
 \end{align*}
+\end{tcolorbox}
+
+\begin{figure}
+    \includegraphics[width=0.4\textwidth]{figures/degradable_quantum_channel.png}
+    \caption{The concept of a degradable quantum channel \cite{Gyongyosi2012PropertiesOT}.}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Properties: Degradable Quantum Channels}
+\begin{itemize}
+    \setlength{\itemsep}{1.5em}
+    \item Additivity of Private Capacity
+    $$P(\mathcal{N} \otimes \mathcal{M}) = P(\mathcal{N}) + P(\mathcal{M})$$
+    \item Additivity of Quantum Capacity
+    $$Q(\mathcal{N} \otimes \mathcal{M}) = Q(\mathcal{N}) + Q(\mathcal{M})$$
+    \item Equivalence of Private and Quantum Capacity
+    $$Q(\mathcal{N}) = P(\mathcal{N})$$
+\end{itemize}
 \end{frame}
