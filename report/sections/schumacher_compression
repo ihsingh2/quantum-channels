@@ -132,6 +132,10 @@ When $\rho^{\otimes n}$ is projected onto the typical subspace $\mathcal{H}_{\te
 
 \end{enumerate}
 
+\begin{center}
+    \includegraphics[width=0.75\textwidth]{figures/schumacher.png}
+\end{center}
+
 \subsection{Proof of Schumacher's Compression Theorem}
 
 \subsubsection{Direct Part: Achievability of Compression Rates}
