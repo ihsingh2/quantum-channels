@@ -100,7 +100,7 @@ The private information $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is d
 $$P(\mathcal{N}) = \max_{\rho_{XA'}} \left[ I(X;B)_\rho - I(X;E)_\rho \right]$$
 \end{definition}
 
-We shall see that this definition of private capacity too satisifies non-negativity, but in contrast to the case of wiretap channel it violates the additivity relation.
+We shall see that this definition of private capacity too satisifies non-negativity, but unlike the wiretap channel it violates the additivity relation.
 
 \begin{figure}[H]
     \centering
@@ -128,18 +128,18 @@ $$P(\mathcal{N}_1 \otimes \mathcal{N}_2) \neq P(\mathcal{N}_1) + P(\mathcal{N}_2
 We construct a new channel $T_k^\mathcal{N}$ based on an arbitrary channel $\mathcal{N}$, such that $C(T_k^\mathcal{N})$ is close to $C(\mathcal{N})$.
 $$C(\mathcal{N}) \leq C(T_k^\mathcal{N}) \leq C(\mathcal{N}) + \delta(k)$$
 
-Further, consider a 50\% erasure channel $A$. The quantum capacity of the combined channel $Q(T_k^N \otimes A)$ satisfies the following relation with the entanglement-assisted capacity $Q_E(\mathcal{N})$ \cite{PhysRevLett.83.3081}.
-$$Q(T_k^\mathcal{N} \otimes A) \geq Q_E(\mathcal{N})$$
+Further, consider a 50\% erasure channel $\mathcal{A}$. The quantum capacity of the combined channel $Q(T_k^N \otimes \mathcal{A})$ satisfies the following relation with the entanglement-assisted capacity $Q_E(\mathcal{N})$ \cite{PhysRevLett.83.3081}.
+$$Q(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q_E(\mathcal{N})$$
 
 For channels $\mathcal{N}$ such that $Q_E(\mathcal{N}) > C(\mathcal{N})$, we can combine the two results as follows.
-$$Q(T_k^\mathcal{N} \otimes A) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N})$$
+$$Q(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N})$$
 
 As we shall prove in the subsequent section, the classical, private and quantum capacities of a quantum channel $\mathcal{N}$ are related as $Q(\mathcal{N}) \leq P(\mathcal{N}) \leq C(\mathcal{N})$. We can use this fact to write the following.
 
-$$P(T_k^\mathcal{N} \otimes A) \geq Q(T_k^\mathcal{N} \otimes A) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N}) \geq P(T_k^\mathcal{N})$$
+$$P(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q(T_k^\mathcal{N} \otimes \mathcal{A}) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N}) \geq P(T_k^\mathcal{N})$$
 
-Since erasure channels have zero private and quantum capacities, when $p \geq 1/2$, $P(A) = Q(A) = 0$ \cite{PhysRevLett.78.3217}. This gives us the following result.
-$$P(T_k^\mathcal{N} \otimes A) > P(T_k^\mathcal{N}) + P(A)$$
+Since erasure channels have zero private and quantum capacities, when $p \geq 1/2$, $P(\mathcal{A}) = Q(\mathcal{A}) = 0$ \cite{PhysRevLett.78.3217}. This gives us the following result.
+$$P(T_k^\mathcal{N} \otimes \mathcal{A}) > P(T_k^\mathcal{N}) + P(\mathcal{A})$$
 
 Thus, the private capacity $P(\mathcal{N})$ of the constructed quantum channel is non-additive.
 \end{proof}
