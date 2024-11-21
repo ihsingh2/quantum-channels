@@ -1,3 +1,50 @@
 \section{Holevo Bound}
+The Holevo bound is a fundamental result in quantum information theory that quantifies the maxiumum amount of classical information that can be extracted from a quantum system.
+\[
+\chi = S(\rho) - \sum_i p_i S(\rho_i).
+\]
+The proof for this is as follows:
 
+Consider a quantum system that encodes classical information, which can be represented by a distribution with probability $p_x$ for each input $x$. This allows us to define the classical state $\rho_x$ as:
+\[
+\rho_X := \sum_x p_x \lvert x \rangle \langle x \rvert,
+\]
+(where $\lvert x \rangle$ (ket $x$) represents a quantum state and $\langle x \rvert$ (bra $x$) represents the Hermitian conjugate of $\lvert x \rangle$.)
+
+Since each input is mapped to a quantum state $\rho_x$, the combined state can be written as:
+\[
+\rho_{XQ} := \sum_x p_x \lvert x \rangle \langle x \rvert \otimes \rho_x,
+\]
+where $\rho_x$ represents the density matrix of the quantum system.
+
+The received combined state is represented as:
+\[
+\rho := \text{Tr}_X (\rho_{XQ}) = \sum_x p_x \rho_x,
+\]
+where $\text{Tr}_X$ represents the trace of $\rho_{XQ}$.
+
+To bound the maximum information obtainable, we need to bound the mutual information $I(X : Y)$ with $I(X : Q)$, where $X$ is the input, $Y$ is the output, and $Q$ is the quantum state. From the monotonicity of quantum mutual information, quantum mutual information does not increase under quantum operations. Hence, we get:
+\[
+I(X : Q'Y) \leq I(X : Q).
+\]
+Similarly,
+\[
+I(X : Y) \leq I(X : Q'Y).
+\]
+From these two inequalities, we get:
+\[
+I(X : Y) \leq I(X : Q).
+\]
+
+Simplifying $S(X : Q)$, we have:
+\[
+I(X : Q) = S(X) + S(Q) - S(XQ),
+\]
+\[
+= S(X) + S(\rho) - \text{Tr}(\rho_{XQ} \log \rho_{XQ}),
+\]
+\[
+= S(\rho) - \sum_x p_x S(\rho_x).
+\]
+Thus, we arrive at the Holevo bound.
 
