@@ -1,6 +1,8 @@
-\section{Quantum(Von Neumann) Entropy}
+\section{Quantum Entropy, Accessible Information and Holevo Bound}
 
-Von Neumann entropy is the measure of disorder of a quantum state, which can be calculated as:
+\subsection{Quantum Entropy}
+
+Quantum (Von Neumann) entropy is the measure of disorder of a quantum state, which can be calculated as:
 \[
 S(\rho) = -\text{Tr}(\rho \log \rho),
 \]
@@ -23,48 +25,48 @@ has eigenvalues $0.8$ and $0.2$ (since the quantum state is diagonal, the eigenv
 S(\rho) = -\sum_i \lambda_i \log \lambda_i = -(0.8 \log 0.8 + 0.2 \log 0.2) = 0.3974.
 \]
 
-\subsection{Properties of Quantum Entropy}
+\subsubsection{Properties of Quantum Entropy}
 
-\subsubsection{Non-Negativity}
+\textbf{Non-Negativity}
 The quantum entropy $H(\rho)$ is non-negative for any density operator $\rho$:
 \[
 H(\rho) \geq 0.
 \]
 Proof: The proof of this follows from the non-negativity of Shannon entropy.
 
-\subsubsection{Minimum Value}
+\textbf{Minimum Value}
 The minimum value of $H(\rho)$ is zero, which occurs when the density operator $\rho$ is in its pure state.
 
 Proof: When the eigenvalues of the density operator are distributed such that all the probability mass is concentrated on one eigenvector (and the other eigenvalues are zero), the density operator has a rank of one. This corresponds to its pure state.
 
-\subsubsection{Maximum Value}
+\textbf{Maximum Value}
 The maximum value of $H(\rho)$ is $\log d$, where $d$ is the dimension of the system. This occurs when the density operator is in its maximally mixed state.
 
 Proof: The proof of this property is the same as in the classical case. A maximally mixed state distributes the probability mass equally among all eigenvalues, achieving the maximum entropy.
 
-\subsubsection{Concavity}
+\textbf{Concavity}
 Let $\rho_x$ $\in$ D(H) and let $p_x(x)$ be the probability distribution. The entropy is concave in the density operator:
 \[
 H(\rho) \geq \sum_x p_X(x) H(\rho_x),
 \]
 where $\rho \equiv \sum_xp_x(x)\rho_x$
 
-\subsubsection{Isometric Invariance}
+\textbf{Isometric Invariance}
 
-\subsection{Joint Quantum Entropy}
+\subsubsection{Joint Quantum Entropy}
 The joint quantum entropy H(AB)$_\rho$ of the density operator $\rho_{AB} \in \mathcal{D}(\mathcal{H_A} \otimes \mathcal{H_B}) $ for a bipartite system AB follows naturally from the definition of quantum entropy
 \[
 H(AB)_\rho \equiv -Tr\{\rho_{AB} \log \rho_{AB}\},
 \]
 
 
-\subsection{Conditional Quantum Entropy}
+\subsubsection{Conditional Quantum Entropy}
 Let $\rho_{AB} \in D(H_A \otimes H_B)$. The conditional quantum entropy $H(A|B)_\rho$ of $\rho_{AB}$ is equal to the difference of the joint quantum entropy $H(AB)_\rho$ and marginal entropy $H(B)_\rho$
 \[
 H(A|B)_\rho \equiv H(AB)_\rho - H(B)_\rho,
 \]
 
-\subsubsection{Conditioning does not increase entropy}
+\textbf{Conditioning does not increase entropy}
 Consider a bipartite quantum state $\rho_{AB}$. Then the following applies for marginal entropy $H(A)_\rho$ and conditional quantum entropy $H(A|B)_\rho$:
 \[
 H(A)_\rho \geq H(A|B)_\rho
@@ -72,7 +74,7 @@ H(A)_\rho \geq H(A|B)_\rho
 The proof for this property is the same as the classical one
 
 
-\subsection{Quantum Mutual Information}
+\subsubsection{Quantum Mutual Information}
 the quantum mutual information of a bipartite state $\rho_{AB} \in \mathcal{D}(\mathcal{H_A} \otimes \mathcal{H_B})$ is defined as follows:
 \[
 I(A;B)_\rho = H(A)_\rho + H(B)_\rho - H(AB)_\rho.
@@ -92,20 +94,20 @@ I(A;B)_\rho = H(A)_\rho - I(A\rangle{}B)_\rho
  = H(B)_\rho - I(B\rangle{}A)_\rho
 \]
 
-\subsubsection{Non-negativity of Quantum Mutual Information}
+\textbf{Non-negativity of Quantum Mutual Information}
 The quantum mutual information of any bipartite quantum state $\rho_{AB}$ is non-negative.
 \[
 I(A;B)_\rho \geq 0
 \]
 
 
-\subsection{Conditional Quantum Mutual Information}
+\subsubsection{Conditional Quantum Mutual Information}
 We define the conditional quantum mutual information $I(A;B|C)_\rho$ of any tripartite state $\rho_{ABC} \in \mathcal{D}(\mathcal{H_A} \otimes \mathcal{H_B} \otimes \mathcal{H_C})$ similarly to how we did in the classical one:
 \[
 I(A;B|C)_\rho \equiv H(A|C)_\rho + H(B|C)_\rho - H(AB|C)_\rho
 \]
 
-\subsubsection{Chain rule}
+\textbf{Chain rule}
 The CQMI obeys a chain rule:
 \[
 I(A;BC)_\rho = I(A;B)_\rho + I(A;C|B)_\rho
@@ -113,13 +115,13 @@ I(A;BC)_\rho = I(A;B)_\rho + I(A;C|B)_\rho
 The proof for this follows the classical one
 
 
-\subsubsection{Non-Negativity if CQMI}
+\textbf{Non-Negativity if CQMI}
 Let $\rho _{ABC} \equiv \mathcal{D}(\mathcal{H_A} \otimes \mathcal{H_B} \otimes \mathcal{H_C}))$.Then the CQMI is non-negative:
 \[
 I(A;B|C)_\rho \geq 0.
 \]
 
-\subsection{Quantum Relative Entropy}
+\subsubsection{Quantum Relative Entropy}
 The quantum relative entropy $D(\rho||\sigma)$ between a density operator $\rho \in D(H)$ and a positive semi-definite operator $\sigma \in L(H)$ is defined as follows:
 \[
 D(\rho \Vert \sigma) = Tr\{\rho[log\rho - log\sigma]\}
@@ -132,14 +134,14 @@ Else it is defined as +$\infty$
 \newline
 \newline
 
-\subsubsection{Monotonicity of Quantum Relative Entropy}
+\textbf{Monotonicity of Quantum Relative Entropy}
 Let $\rho \in \mathcal{D}(\mathcal{H}), \sigma \in \mathcal{L}(\mathcal{H}) \text{ and } \mathcal{N}:\mathcal{L}(\mathcal{H}) \rightarrow \mathcal{L}(\mathcal{H}\prime)$ be a quantum channel. The quantum relative entropy can only decrease or stay the same if we apply the same quantum channel N to $\rho$ and $\sigma$:
 \[
 D(\rho||\sigma) \geq D(N(\rho)||N(\sigma))
 \]
 This implies non-negativity of quantum relative entropy in some cases
 
-\subsubsection{Non-negativity}
+\textbf{Non-negativity}
 Let $\rho \in \mathcal{D}(\mathcal{H})$, and let $\sigma \in \mathcal{L}(\mathcal{H})$ be positive semi-definite such that $Tr\{\rho\} \leq 1$. Then the quantum relative entropy $D(\rho||\sigma)$ is non-negative:
 \[
 D(\rho||\sigma) \geq 0
@@ -155,7 +157,7 @@ D(\rho||\sigma) \geq D(Tr\{\rho\}||Tr\{\sigma\} = Tr\{\rho\}log\left(\frac{Tr\{\
 If $\rho = \sigma$, then we get that $D(\rho||\sigma)$ = 0.This implies that the inequality above is saturated and thus Tr\{$\rho$\} = Tr\{$\sigma$\} = 1. Let M be an arbitrary measurement channel. From the monotonicity of relative entropy we can conclude that $D(M(\rho)||M(\sigma)$ = 0. The equality condition for non-negative entropy gives us $M(\rho) = M(\sigma)$. Since this equality holds for any possible measurement channel, we can conclude that $\rho = \sigma$
 \newline
 
-\subsubsection{Property}
+\textbf{Property}
 Let $\rho \in \mathcal{D}(\mathcal{H})$ and $\sigma, \sigma' \in \mathcal{L}(\mathcal{H})$ be positive semi-definite. Suppose that $\sigma \leq \sigma'$. Then
 \[
 D(\rho \| \sigma') \leq D(\rho \| \sigma).
