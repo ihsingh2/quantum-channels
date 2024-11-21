@@ -29,7 +29,7 @@ exploiting the channel's underlying quantum mechanics to achieve greater efficie
 superadditivity highlights the advantage of leveraging quantum properties like entanglement
 and coherence for information transmission.
 
-Our article explores the nature of quantum channels, and delves into the mathematical
+Our term paper explores the nature of quantum channels, and delves into the mathematical
 frameworks used to quantify their capacities. We discuss the fundamental concepts underlying
 quantum channel capacities, analyze the theoretical limits of information transmission, and
 cement theses ideas by taking a suitable example.
@@ -53,8 +53,6 @@ We note the following properties about the Trace:
     \item Trace is Cyclic: $Tr[ABC] = Tr[CAB]$
 \end{itemize} 
 
-DEFINE PARTIAL TRACE
-
 \subsection{States}
 
 In quantum mechanics, the state of a system encapsulates all the information needed to describe
@@ -67,7 +65,7 @@ in a two-level quantum system (qubit), a general pure state is represented as
 \( |\psi\rangle = \alpha |0\rangle + \beta |1\rangle \), where \( \alpha \) and \( \beta \) are
 complex coefficients satisfying \( |\alpha|^2 + |\beta|^2 = 1 \).
 
-Moreover, it is important to note that the trace of the square of a pure state is 1, or
+It is important to note that the trace of the square of a pure state is 1, or
 $Tr[| \psi \rangle^2] = 1$.
 
 However, in many real-world scenarios, systems are not isolated and can exist in \textbf{mixed states},
@@ -76,6 +74,17 @@ by \textbf{density operators}, which generalize the concept of quantum states to
 probabilistic mixtures and interactions with external environments. Trace of squares of mixed states is
 not necessarily 1. $\rho = 0.5 |0 \rangle \langle 0| + 0.5 |1 \rangle \langle 1|$ is an example of such
 a mixed state.
+
+In quantum information theory, we define a quantity called \textbf{purity} to judge if a state is pure
+or not:
+
+\begin{definition}[Purity]
+    The purity of a state $P[\rho]$ is defined as:
+    \begin{equation}
+        P[\rho] = Tr[\rho^\dagger\rho] = Tr[\rho^2]
+    \end{equation}
+    $P[\rho] = 1$ if $\rho$ is pure and $P[\rho] < 1$ if $\rho$ is NOT pure.
+\end{definition}
 
 \subsection{Density Operators}
 
@@ -104,7 +113,7 @@ as follows:
 \begin{itemize}
     \item Density operator has unit trace: $Tr[\rho] = 1$
     \item Density operator is Hermitian: $\rho^\dagger = \rho$
-    \item Density operators are positive semi-definite, meaning $\langle \varphi  | \rho | \varphi \rangle
+    \item Density operators are positive semi-definite, meaning $\langle \varphi  | \rho | \varphi \rangle \geq 0
     \forall \varphi$ which may be written as $\rho >= 0$
 \end{itemize}
 It is worth mentioning that every ensemble has a unique density operator, but the opposite
@@ -153,7 +162,44 @@ This brings us to the related definition of separable states and entanglement:
     A state that is not separable is said to be entangled.
 \end{definition}
 
-THE 3 STEP PROCESS
+One more tool that is often used in quantum information theory is the Partial Trace. It is defined as follows:
+
+\begin{definition}[Partial Trace]
+    Let $X_{AB}$ be a square operator acting on the tensor product Hilbert Space $\mathcal{H}_A\otimes \mathcal{H}_B$
+    and let $\{| l \rangle_B\}$ be an orthonormal basis for $\mathcal{H}_B$. Then, the partial trace over $B$ is:
+    \begin{equation}
+        Tr_B[X_{AB}] \equiv \displaystyle\sum_{l} (I_A \otimes \langle l |_B) X_{AB} (I_A \otimes | l \rangle_B)
+    \end{equation}
+\end{definition}
+
+The partial trace effectively "traces out" one part of the system, leaving us with the "local" density operator to work with.
+
+Now that we have defined the environment, we can go on to describe how a channel process a state. Although
+the exact details of a channel will be described below, we are right now interested in describing how
+the channel is used to process information.
+
+This usually takes place is 3 steps. As seen in figure \ref{channelimg}, we usually deal with classical
+information that needs to be converted to its quantum analogue first. This conversion takes place
+through an "encoder", in a process called state preparation. This prepared state can then be evolved
+through various quantum channels to get our final result, which is usually quantum information that
+needs to be converted to some classical form for analysis through some "decoder". This "decoder" is
+more often than not some measurement through some instrument. It is interesting to note that the process
+of measurement itself can be modelled as a quantum channel! It is convenient, however, to model
+measurements as POVMs (Positive Operator Valuled Measures). We define these as follows:
+
+\begin{definition}[POVM]
+    A Positive Operator Valued Measure (POVM) is a set $\{\Lambda_j\}_j$ of operators that satisfy
+    non-negativity and completeness:
+    \begin{align}
+        \forall j : \Lambda_j \geq 0 \\
+        \displaystyle\sum_{j} \Lambda_j = I
+    \end{align}
+    and the probability of obtaining outcome $j$ is:
+    \begin{equation}
+        \langle \psi | \Lambda_j | \psi \rangle
+    \end{equation}
+\end{definition}
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.15]{figures/channel1.png}
@@ -163,6 +209,7 @@ THE 3 STEP PROCESS
     back to classical information - the encoder and decoder can both be modelled as quantum channels
     themselves. (Bottom) Illustration of how a reference system (in this case it is known to be $|0\rangle$)
     may be considered along with the main system when processing through a channel.}
+    \label{channelimg}
 \end{figure}
 
 \subsection{Channels as CPTP maps}
@@ -170,6 +217,59 @@ THE 3 STEP PROCESS
 Now we have established most things required to begin our major discussion on Quantum Channels. Any
 Quantum channel is a model of a physical transformation. Hence, there are certain rules that such a
 channel must follow in order to make physical sense.
+
+Let us take $\mathcal{D}_A$ and $\mathcal{D}_B$ to be the set all density operators in Hilbert spaces
+$\mathcal{H}_A$ and $\mathcal{H}_B$ respectively. Our channel must be a map from $\mathcal{D}_A$ to
+$\mathcal{D}_B$. We use $\mathcal{L}(\mathcal{H})$ to denote the set of all square linear operators on 
+$\mathcal{H}$. Let us call our channel $\mathcal{N}$ For the channel to make physical sense, we must
+apply 3 restrictions on it:
+
+\begin{description}
+    \item[Linearity] {
+        It makes sense to have linearity in quantum channels. Although the physical
+        basis for this condition is beyond the scope of this short review, if channels were not
+        linear, the results of many experiments would not make sense. We may take this as an axiom
+        for now.
+        
+        Hence, a quantum channel must satisfy:
+        \begin{equation}
+            \mathcal{N}(\alpha X_A + \beta Y_A) = \alpha \mathcal{N}(X_A) + \beta \mathcal{N}(Y_A)
+        \end{equation}
+        }
+    \item[Complete Positivity] {
+        Since $\mathcal{N}$ maps density operator to density operator, the output of this map must
+        be positive semi-definite whenever the input is positive semi-definite as all density operators
+        are always positive semi-definite. For this we define positivity:
+        \begin{definition}[Positivity]
+            A linear map $\mathcal{M} : \mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
+            is said to be positive if $\mathcal{M}(X_A)$ is positive semi-definite for all positive
+            semi-definite $X_A$.
+        \end{definition}
+        However, this condition must be extended a little bit. Since we are often working with product
+        states with reference systems and our channel may apply to only one of the states in the product,
+        the above definition may prove to be lacking. To remedy this, we define complete positivity:
+        \begin{definition}[Complete Positivity]
+            A linear map $\mathcal{M} : \mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
+            is said to be completely positive if $id_R \otimes \mathcal{M}$ is positive map for a reference
+            system $R$ of arbitrary size.
+        \end{definition}
+        We require our channel map to be completely positive.
+    }
+    \item[Trace Preserving] {
+        Lastly, since (again) our channel maps density operators to density operators, the input and output
+        both must have Trace 1. In other words, the trace of the output must be the same as the trace of the
+        input. This is defined as:
+        \begin{definition}[Trace Preservation]
+            A map $\mathcal{N}$ is trace preserving if $Tr[X_A] = Tr[\mathcal{N}(X_A)]$ for all input $X_A \in \mathcal{L}(\mathcal{H}_A)$
+        \end{definition}
+    }
+\end{description}
+
+With the above conditions defined, we may now define a quantum channel:
+
+\begin{definition}[Quantum Channel]
+    A quantum channel is a linear, completely positive, trace preserving map, corresponding to a quantum physical evolution.
+\end{definition}
 
 \subsection{Choi-Kraus Representation and the Choi operator}
 
@@ -189,46 +289,46 @@ out to be incredibly useful and insightful. We summarize this representation as 
     \end{equation}
 \end{theorem}
 
-\renewcommand{\pageauthor}{Yash Seri}
+% \renewcommand{\pageauthor}{Yash Seri}
 
-\subsection{POVM Measurements}
-A \textbf{Positive Operator-Valued Measure (POVM)} is a quantum measurement described by positive semi-definite operators on a Hilbert space. POVMs generalize projection-valued measures (PVMs), allowing for a broader class of quantum measurements. 
+% \subsection{POVM Measurements}
+% A \textbf{Positive Operator-Valued Measure (POVM)} is a quantum measurement described by positive semi-definite operators on a Hilbert space. POVMs generalize projection-valued measures (PVMs), allowing for a broader class of quantum measurements. 
 
-In analogy, while a PVM describes pure state measurements, a POVM is to a \emph{mixed state}, often arising from subsystems of larger quantum systems or effects of noisy environments. POVMs are extensively used in quantum information theory.
+% In analogy, while a PVM describes pure state measurements, a POVM is to a \emph{mixed state}, often arising from subsystems of larger quantum systems or effects of noisy environments. POVMs are extensively used in quantum information theory.
 
-\subsection{Definition}
-Let \( \mathcal{H} \) denote a Hilbert space and \( (X, M) \) a measurable space. A POVM is a function \( F \) defined on \( M \) whose values are positive bounded self-adjoint operators on \( \mathcal{H} \), satisfying:
-\[
-F(X) = I_{\mathcal{H}}, \quad \langle \psi | F(E) | \psi \rangle \geq 0,
-\]
-where \( \langle \psi | F(E) | \psi \rangle \) gives the probability of event \( E \) for state \( |\psi\rangle \). 
+% \subsection{Definition}
+% Let \( \mathcal{H} \) denote a Hilbert space and \( (X, M) \) a measurable space. A POVM is a function \( F \) defined on \( M \) whose values are positive bounded self-adjoint operators on \( \mathcal{H} \), satisfying:
+% \[
+% F(X) = I_{\mathcal{H}}, \quad \langle \psi | F(E) | \psi \rangle \geq 0,
+% \]
+% where \( \langle \psi | F(E) | \psi \rangle \) gives the probability of event \( E \) for state \( |\psi\rangle \). 
 
-In finite dimensions, a POVM is a set of positive semi-definite Hermitian matrices \( \{F_i\} \) satisfying:
-\[
-\sum_i F_i = I,
-\]
-where \( I \) is the identity matrix.
+% In finite dimensions, a POVM is a set of positive semi-definite Hermitian matrices \( \{F_i\} \) satisfying:
+% \[
+% \sum_i F_i = I,
+% \]
+% where \( I \) is the identity matrix.
 
-\subsection{Properties}
-1. \textbf{Probability Measure:} For a quantum state \( \rho \), the probability of measurement outcome \( i \) is:
-   \[
-   \text{Prob}(i) = \text{Tr}(\rho F_i).
-   \]
-   If \( \rho \) is pure (\( \rho = |\psi\rangle\langle\psi| \)), this reduces to:
-   \[
-   \text{Prob}(i) = \langle \psi | F_i | \psi \rangle.
-   \]
+% \subsection{Properties}
+% 1. \textbf{Probability Measure:} For a quantum state \( \rho \), the probability of measurement outcome \( i \) is:
+%    \[
+%    \text{Prob}(i) = \text{Tr}(\rho F_i).
+%    \]
+%    If \( \rho \) is pure (\( \rho = |\psi\rangle\langle\psi| \)), this reduces to:
+%    \[
+%    \text{Prob}(i) = \langle \psi | F_i | \psi \rangle.
+%    \]
 
-2. \textbf{Comparison with PVMs:} 
-   - In PVMs, measurement operators \( \{P_i\} \) are orthogonal projectors (\( P_iP_j = \delta_{ij}P_i \)).
-   - POVMs relax this restriction, enabling non-orthogonal measurement operators and greater flexibility.
+% 2. \textbf{Comparison with PVMs:} 
+%    - In PVMs, measurement operators \( \{P_i\} \) are orthogonal projectors (\( P_iP_j = \delta_{ij}P_i \)).
+%    - POVMs relax this restriction, enabling non-orthogonal measurement operators and greater flexibility.
 
-\subsection{Applications}
-POVMs are widely used in quantum information and communication:
-\begin{itemize}
-    \item \textbf{Quantum State Discrimination:} Optimal strategies for distinguishing non-orthogonal quantum states.
-    \item \textbf{Quantum Cryptography:} Analyze eavesdropping and maximize information extraction.
-    \item \textbf{Quantum Communication:} Determine classical information capacity of quantum channels.
-\end{itemize}
+% \subsection{Applications}
+% POVMs are widely used in quantum information and communication:
+% \begin{itemize}
+%     \item \textbf{Quantum State Discrimination:} Optimal strategies for distinguishing non-orthogonal quantum states.
+%     \item \textbf{Quantum Cryptography:} Analyze eavesdropping and maximize information extraction.
+%     \item \textbf{Quantum Communication:} Determine classical information capacity of quantum channels.
+% \end{itemize}
 
-POVMs generalize quantum measurements, extending beyond projective measurements, and play a crucial role in understanding and utilizing quantum systems.
+% POVMs generalize quantum measurements, extending beyond projective measurements, and play a crucial role in understanding and utilizing quantum systems.
