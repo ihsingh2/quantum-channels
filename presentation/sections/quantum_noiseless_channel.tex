@@ -1,4 +1,4 @@
-\section{Schumacher's Quantum Noiseless Channel Coding Theorem}
+\section{Introduction to Schumacher's Compression Theorem}
 
 \begin{frame}{Shannon's Source Coding Theorem}
     \textbf{Classical Context:} Shannon's theorem provides the foundation for lossless data compression:
@@ -11,6 +11,11 @@
     H(X) = -\sum_{x \in \mathcal{X}} P(x) \log_2 P(x),
     \]
     where \( P(x) \) is the probability of symbol \( x \).
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{figures/shannon_pic.png}
+        \caption{Shannon's Noisy Channel Theorem \cite{jahooShannonsNoisy}}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{Schumacher's Compression Theorem}
@@ -26,7 +31,14 @@
         \item For a source emitting states described by \( \rho \), the minimum qubits needed for \( n \) copies is \( n S(\rho) \).
         \item The data can be compressed with nearly perfect fidelity as \( n \to \infty \).
     \end{enumerate}
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.75\textwidth]{figures/schumacher.png}
+        \caption{Schumacher Info Picture \cite{PhysRevA.51.2738}}
+    \end{figure}
 \end{frame}
+
+\section{Key Concepts in Schumacher's Theorem}
 
 \begin{frame}{Quantum States and Density Matrices}
     \begin{itemize}
@@ -60,6 +72,9 @@
         \]
     \end{itemize}
 \end{frame}
+
+% Section: Proof of Schumacher's Theorem
+\section{Proof of Schumacher's Theorem}
 
 \begin{frame}{Proof of Achievability}
     \textbf{Goal:} Achieve asymptotically perfect fidelity for \( R > S(\rho) \).
@@ -115,3 +130,17 @@
     \text{Tr}[\Pi_l \rho^{\otimes n_k}] \to 0 \quad \implies \quad F(D_k \circ E_k, \rho^{\otimes n_k}) \to 0.
     \]
 \end{frame}
+
+\section{Image Citations}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/shannon_pic.png}
+    \caption{Shannon's Noisy Channel Theorem \cite{jahooShannonsNoisy}}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/schumacher.png}
+    \caption{Schumacher Info Picture \cite{PhysRevA.51.2738}}
+\end{figure}
