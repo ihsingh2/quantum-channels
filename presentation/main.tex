@@ -10,10 +10,10 @@
 \setbeamertemplate{footline}[text line]{%
     \parbox{\linewidth}{\vspace*{-24pt}\pageauthor\hfill\insertpagenumber}}
 
-% % bibliography
-% \usepackage[style=ieee]{biblatex}
-% \bibliography{refs.bib}
-% \renewcommand*{\bibfont}{\footnotesize}
+% bibliography
+\usepackage[style=ieee]{biblatex}
+\bibliography{refs.bib}
+\renewcommand*{\bibfont}{\footnotesize}
 
 % figures
 \usepackage{graphicx}
@@ -64,9 +64,9 @@
 \include{./sections/super_additivity}
 \include{./sections/examples}
 
-%\renewcommand{\pageauthor}{}
-%\begin{frame}[plain, allowframebreaks]{References}
-%    \printbibliography[heading=none]
-%\end{frame}
+\renewcommand{\pageauthor}{}
+\begin{frame}[plain, allowframebreaks]{References}
+   \printbibliography[heading=none]
+\end{frame}
 
 \end{document}
