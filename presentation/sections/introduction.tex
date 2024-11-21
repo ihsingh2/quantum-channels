@@ -19,6 +19,52 @@
     These three steps have been illustrated in the following figures.
 \end{frame}
 
+\begin{frame}{Quantum channel conditions}
+    Three conditions:
+    \begin{description}
+        \item[Linearity] {
+            A quantum channel must satisfy:
+            \begin{equation}
+                \mathcal{N}(\alpha X_A + \beta Y_A) = \alpha \mathcal{N}(X_A) + \beta \mathcal{N}(Y_A)
+            \end{equation}
+            }
+        \item[Complete Positivity] {
+            It must have complete positivity:
+            \begin{definition}[Complete Positivity]
+                A linear map $\mathcal{M} : \mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
+                is said to be completely positive if $id_R \otimes \mathcal{M}$ is positive map for a reference
+                system $R$ of arbitrary size.
+            \end{definition}
+        }
+        \item[Trace Preserving] {
+            Channel must be trace preserving
+            \begin{definition}[Trace Preservation]
+                A map $\mathcal{N}$ is trace preserving if $Tr[X_A] = Tr[\mathcal{N}(X_A)]$ for all input $X_A \in \mathcal{L}(\mathcal{H}_A)$
+            \end{definition}
+        }
+    \end{description}
+\end{frame}
+
+\begin{frame}{Choi Operator}
+    \begin{definition}[Choi Operators]
+        Let $\mathcal{H}_R$ and $\mathcal{H}_A$ be isomorphic Hilbert spaces, and let
+        $\{| i\rangle_R \}$ and $\{|i\rangle_A \}$ be orthonormal bases for $\mathcal{H}_R$
+        and $\mathcal{H}_A$, respectively. Let $\mathcal{H}_B$ be some other Hilbert space,
+        and let $\mathcal{N} : \mathcal{L}(\mathcal{H}_A) \rightarrow \mathcal{L}(\mathcal{H}_B)$
+        be a linear map (written also as $N_{A\rightarrow B}$). The Choi operator corresponding
+        to $N_{A\rightarrow B}$ and the bases $\{| i\rangle_R \}$ and $\{|i\rangle_A \}$ is defined
+        as the following operator:
+        \begin{equation}
+            (id_R \otimes \mathcal{N}_{A \rightarrow B})(| \Gamma \rangle\langle \Gamma |_{RA})
+            = \displaystyle\sum_{i,j = 0}^{d_A-1}| i \rangle\langle j |_R \otimes \mathcal{N}_{A \rightarrow B}(| i \rangle\langle j |_A)
+        \end{equation}
+        where $d_A \equiv dim(\mathcal{H}_A)$ and $| \Gamma \rangle_{RA}$ is the unnormalized maximally entangled vector:
+        \begin{equation}
+            | \Gamma \rangle_{RA} \equiv \displaystyle\sum_{i=0}^{d_A - 1} | i \rangle_R \otimes | i \rangle_A
+        \end{equation}
+    \end{definition}
+\end{frame}
+
 \begin{frame}
     \begin{figure}
         \includegraphics[scale=0.1]{channel2.png}

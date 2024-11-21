@@ -18,3 +18,54 @@
 
     More channel examples will be produced soon along with analyses on the various capacities of these channels.
 \end{frame}
+
+\begin{frame}{Example - Erasure channel}
+    % \item[Erasure Quantum Channel]{
+        The erasure quantum channel $\mathcal{N}_p$ "erases" the input state $\rho$
+        with probability $p$ or transmits the state unchanged with probability $(1−p)$
+        \begin{equation}
+            \mathcal{N}_p(\rho) \rightarrow (1-p)\rho + (p| e \rangle\langle e |)
+        \end{equation}
+        where $|e\rangle$ is the "erasure state".
+        The classical capacity of this channel is given by:
+        \begin{equation}
+            C(\mathcal{N}_p) = (1-p)\log (d)
+        \end{equation}
+        Here $d$ is the dimension of the input system. This demonstrates that the channel
+        can transmit some classical information only for $0 \leq p < 1$, otherwise the
+        classical capacity is $0$.
+        
+        On the other hand, its quantum capacity is:
+        \begin{equation}
+            Q(\mathcal{N}_p) = (1-2p)\log (d)
+        \end{equation}
+        This is similar to classical capacity, except that information can only be transferred
+        if $0 \leq p < 1/2$.
+    % }
+\end{frame}
+\begin{frame}{Example - Phase Erasure Channel}
+    % \item[Phase Erasure channel] {
+        The Phase Erasure channel "erases" (as the name indicates) the phase of its inputs with
+        probability $p$ but does not affect the amplitude. The map is expressed as:
+        \begin{equation}
+            \mathcal{N}(\rho) \rightarrow (1-p)\rho \otimes |0\rangle\langle 0| + p\frac{\rho + Z\rho Z^\dagger}{2}\otimes |1\rangle\langle 1|
+        \end{equation}
+        The classical capacity of this channel is:
+        \begin{equation}
+            C(\mathcal{N}) = 1
+        \end{equation}
+        The quantum capacity of this channel is:
+        \begin{equation}
+            Q(\mathcal{N}) = (1-p)\log (d)
+        \end{equation}
+        where the variables hold the same meaning as the last example.
+    % }
+\end{frame}
+
+\begin{frame}{Superadditivity}
+    Graeme Smith and Jon Yard's example:
+
+    A private Horodecki channel and a Symmetric channel may be combined to
+    give a quantum channel with non-zero Quantum capacity, even though the
+    individual channels have zero quantum capacity individually.
+\end{frame}
