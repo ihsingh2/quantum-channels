@@ -59,17 +59,10 @@ channel, similar to how the classical capacity is linked to the Holevo Informati
 Since coherent information itself can be superadditive, the overall quantum capacity of a
 channel may similarly display superadditivity.
 
-We show this superadditivity mathematical.
-
-We may begin by showing the superadditivity of Coherent information. We need to show that
-% \begin{equation}
-    
-% \end{equation}
-% \begin{align}
-%     \begin{split}
-        
-%     \end{split}
-% \end{align}
+Mathematically, we may write this as:
+\begin{equation}
+    Q(\mathcal{N} \otimes \mathcal{M}) \geq Q(\mathcal{N}) + Q(\mathcal{M})
+\end{equation}
 
 One classical analogy would be to consider a system where combining two noisy communication
 lines produces a more reliable transmission than would be expected from their individual
@@ -77,3 +70,16 @@ performance, but in quantum mechanics, this is achieved by leveraging entangleme
 correlations.
 
 \subsection{Private Capacity}
+
+It is interesting to see that for quantum channels, not only the quantum and classical capabilities
+but also the private capacity can be superadditive! As demonstrated by \cite{Li_2009}, there is
+possibility for two channels with limited private capacity to combine as a tensor product channel
+to have private capacity greater than the sum of the two. We do not know the exact formulation of
+this relation as of now, so we write:
+
+\begin{equation}
+    P^?(\mathcal{N} \otimes \mathcal{M}) > P^?(\mathcal{N}) + P^?(\mathcal{M})
+\end{equation}
+
+The superadditivity of quantum channels is still a pretty unexplored topic, and there are many open
+questions still unanswered.
