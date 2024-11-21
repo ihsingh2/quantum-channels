@@ -21,14 +21,14 @@ Schumacher’s Compression Theorem provides a way to compress quantum informatio
 
 Shannon’s Source Coding Theorem establishes the minimum average number of bits needed to represent information from a classical source without loss, which is directly related to the entropy of the source.
 
-\subsubsection{Theorem Statement}
+\subsection{Theorem Statement}
 For a discrete memoryless source \(X\), with alphabet \(\mathcal{X}\), and probability distribution \(P(X)\), the minimum rate \(R\) (in bits per symbol) at which information can be transmitted without loss is given by \textit{Shannon entropy} \(H(X)\):
 \[
 H(X) = -\sum_{x \in \mathcal{X}} P(x) \log_2 P(x)
 \]
 This entropy \(H(X)\), represents the average information per symbol.
 
-\subsubsection{Proof of Shannon's Source Coding Theorem}
+\subsection{Proof of Shannon's Source Coding Theorem}
 We consider the steps below, and draw a parallel with the proof of Schumacher's Compression 
 
 \begin{enumerate}
@@ -46,7 +46,7 @@ We consider the steps below, and draw a parallel with the proof of Schumacher's 
     \includegraphics[width=0.75\textwidth]{figures/shannon_pic.png}
 \end{center}
 
-\subsubsection{Important quantities to consider for Schumacher's Compression}
+\subsection{Important quantities to consider for Schumacher's Compression}
 
 \begin{itemize}
 \item \textbf{Entropy Measures:}
@@ -63,9 +63,9 @@ Schumacher compresses quantum states by projecting them onto the typical subspac
 
 \end{itemize}
 
-\subsection{Quantum Compression - Schumacher's Compression Theorem}
+\section{Quantum Compression - Schumacher's Compression Theorem}
 
-\subsubsection{Theorem Statement}
+\subsection{Theorem Statement}
 
 \begin{enumerate}
 
@@ -85,10 +85,10 @@ then \(R \geq S(\rho)\).
 
 \end{enumerate}
 
-\subsubsection{Typical Subspaces}
+\subsection{Typical Subspaces}
 They capture the most probable sequences emitted by the quantum source.
 
-Definition:
+\subsubsection{Definition}
 
 An \(\epsilon\)-typical sequence \((i_1, i_2, \dots, i_n)\) satisfies:
 \[
@@ -105,7 +105,7 @@ The \(\epsilon\)-typical subspace \(\mathcal{H}_{\text{typ}}\) of \(\mathcal{H}^
 \]
 where \(T_{n, \epsilon}(p)\) denotes the set of \(\epsilon\)-typical sequences.
 
-Properties:
+\subsubsection{Properties}
 
 \begin{enumerate}
     \item \textbf{High Probability:} The projection of \(\rho^{\otimes n}\) onto \(\mathcal{H}_{\text{typ}}\) captures most of the probability mass:
@@ -135,66 +135,138 @@ When $\rho^{\otimes n}$ is projected onto the typical subspace $\mathcal{H}_{\te
 \end{enumerate}
 
 \begin{center}
-    \includegraphics[width=0.75\textwidth]{figures/schumacher.png}
+    \includegraphics[width=1\textwidth]{figures/schumacher.png}
 \end{center}
 
-\subsubsection{Proof of Schumacher's Compression Theorem}
+\subsection{Proof of Schumacher's Compression Theorem}
 
-Direct Part: Achievability of Compression Rates
+\subsubsection{Direct Part: Achievability of Compression Rates}
 
-We want to construct a compression scheme that achieves \textit{asymptotically} perfect fidelity for any rate \(R > S(\rho)\).
+We aim to construct a compression scheme that achieves \textit{asymptotically} perfect fidelity for any rate \(R > S(\rho)\).
 
 \paragraph{Step 1: Typical Projector \(\Pi_{n, \epsilon}\)}
+
+Consider the typical projector \(\Pi_{n, \epsilon}\). It's defined as:
 \[
-\Pi_{n, \epsilon} = \sum_{(i_1, \dots, i_n) \in T_{n, \epsilon}(p)} |\psi_{i_1} \otimes \cdots \otimes \psi_{i_n}\rangle \langle \psi_{i_1} \otimes \cdots \otimes \psi_{i_n}|.
+\Pi_{n, \epsilon} = \sum_{(i_1, \dots, i_n) \in T_{n, \epsilon}(p)} |\psi_{i_1} \otimes \cdots \otimes \psi_{i_n}\rangle \langle \psi_{i_1} \otimes \cdots \otimes \psi_{i_n}|,
 \]
-This projector maps states onto the typical subspace \(\mathcal{H}_{\text{typ}}\).
+where \(T_{n, \epsilon}(p)\) is the set of \(\epsilon\)-typical strings of length \(n\), and is based on \(\{p_i\}\) over the basis states \(\{|\psi_i\rangle\}\) of \(\rho\). 
+\\
+The typical projector maps states into the typical subspace \(\mathcal{H}_{\text{typ}}\), which has the following properties:
+
+\begin{itemize}
+    \item \textbf{Dimension Bound:}
+    The dimension of the typical subspace is approximately:
+    \[
+    \dim(\mathcal{H}_{\text{typ}}) \leq 2^{n(S(\rho) + \epsilon)}.
+    \]
+
+    \item \textbf{Probability Concentration:}
+    The typical subspace captures almost all the probability mass of \(\rho^{\otimes n}\) for sufficiently large n.
+    \[
+    \text{Tr}[\Pi_{n, \epsilon} \rho^{\otimes n}] \to 1 \quad \text{as } n \to \infty.
+    \]
+
+    \item \textbf{Entropy Bound:}
+    For any state in the typical subspace, the eigenvalues of \(\rho^{\otimes n}\) satisfy:
+    \[
+    2^{-n(S(\rho) + \epsilon)} \leq \langle \psi | \rho^{\otimes n} | \psi \rangle \leq 2^{-n(S(\rho) - \epsilon)},
+    \]
+    where \(|\psi\rangle \in \mathcal{H}_{\text{typ}}\).
+\end{itemize}
+
+This subspace represents where most of the information of \(\rho^{\otimes n}\) is present.
 
 \paragraph{Step 2: Encoding and Decoding}
 
-Let \(m_n = \lceil n R \rceil\), where \(R > S(\rho)\).
-\\
-For large \(n\), \(D_{\text{typical}} \leq 2^{n(S(\rho) + \epsilon)} < 2^{m_n}\). 
-\\
-This allows us to encode the typical subspace into a smaller Hilbert space \((\mathbb{C}^2)^{\otimes m_n}\).
-
-\begin{itemize}
-    \item \textbf{Encoding Channel:} \(E_n : \mathcal{H}^{\otimes n} \to (\mathbb{C}^2)^{\otimes m_n}\).
-   \[
-E_n(\rho^{\otimes n}) = 
-\begin{cases}
-    V_{n, \epsilon} \rho^{\otimes n} V_{n, \epsilon}^\dagger, & \text{within } \mathcal{H}_{\text{typ}}, \\
-    |0\rangle\langle 0|, & \text{within the orthogonal complement}.
-\end{cases}
+Let \(m_n = \lceil n R \rceil\), where \(R > S(\rho)\). For sufficiently large \(n\), the dimension of the compressed Hilbert space satisfies:
+\[
+2^{m_n} > 2^{n(S(\rho) + \epsilon)}.
 \]
 
-    \item \textbf{Decoding Channel:} \(D_n : (\mathbb{C}^2)^{\otimes m_n} \to \mathcal{H}^{\otimes n}\).
+Thus, the typical subspace can be mapped onto a smaller lower-dimensional Hilbert space \((\mathbb{C}^2)^{\otimes m_n}\).
+
+\begin{itemize}
+    \item \textbf{Encoding Channel:}
+    The encoding map \(E_n : \mathcal{H}^{\otimes n} \to (\mathbb{C}^2)^{\otimes m_n}\) is defined as:
     \[
-    D_n(Y) = V_{n, \epsilon}^\dagger Y V_{n, \epsilon}
+    E_n(\rho^{\otimes n}) =
+    \begin{cases}
+        V_{n, \epsilon} \rho^{\otimes n} V_{n, \epsilon}^\dagger, & \text{if } \rho^{\otimes n} \in \mathcal{H}_{\text{typ}}, \\
+        |0\rangle \langle 0|, & \text{otherwise}.
+    \end{cases}
     \]
+    Here, \(V_{n, \epsilon}\) is an \textit{isometry} that maps \(\mathcal{H}_{\text{typ}}\) into \((\mathbb{C}^2)^{\otimes m_n}\). And any state outside the typical subspace is mapped to a fixed state \(|0\rangle \in (\mathbb{C}^2)^{\otimes m_n}\).
+
+    \item \textbf{Decoding Channel:}
+    The decoding map \(D_n : (\mathbb{C}^2)^{\otimes m_n} \to \mathcal{H}^{\otimes n}\) is defined as:
+    \[
+    D_n(Y) = V_{n, \epsilon}^\dagger Y V_{n, \epsilon}.
+    \]
+This will reconstruct the original state from its compressed representation in the typical subspace, while states outside the typical subspace are mapped to their nearest approximation within  \(\mathcal{H}_{\text{typ}}\).
 \end{itemize}
 
 \paragraph{Step 3: Fidelity Analysis}
 
-The fidelity between the original state \(\rho^{\otimes n}\) and the reconstructed state after compression and decompression satisfies:
+To analyze the fidelity of the compression scheme, consider the combined operation \(D_n \circ E_n\), represented by its Kraus operators \(\{A_l^{(n)}\}\). The fidelity between the original state \(\rho^{\otimes n}\) and the reconstructed state is given by:
 \[
-F(D_n \circ E_n, \rho^{\otimes n}) \geq \operatorname{Tr}[\Pi_{n, \epsilon} \rho^{\otimes n}] \to 1 \quad \text{as } n \to \infty.
+F(D_n \circ E_n, \rho^{\otimes n}) = \left( \sum_{l=1}^{L_n} \left| \operatorname{Tr}(A_l^{(n)} \rho^{\otimes n}) \right| \right)^2.
 \]
-Follows from the high-probability property of the typical subspace.
+
+Using the Cauchy-Schwarz inequality, we can bound the term \(\left| \operatorname{Tr}(A_l^{(n)} \rho^{\otimes n}) \right|\) as:
+\[
+\left| \operatorname{Tr}(A_l^{(n)} \rho^{\otimes n}) \right|^2 \leq \operatorname{Tr}[\Pi_l^{(n)} \rho^{\otimes n}] \cdot q_l^{(n)},
+\]
+where:
+\[
+q_l^{(n)} = \operatorname{Tr}[A_l^{(n)} A_l^{(n)\dagger}] \quad \text{and} \quad \Pi_l^{(n)} = A_l^{(n)\dagger} A_l^{(n)}.
+\]
+
+Substituting this back, we bound the fidelity as:
+\[
+F(D_n \circ E_n, \rho^{\otimes n}) \leq \sum_{l=1}^{L_n} q_l^{(n)} \cdot \operatorname{Tr}[\Pi_l^{(n)} \rho^{\otimes n}].
+\]
+
+Since \(D_n \circ E_n\) is a quantum channel, the total probability weights satisfy:
+\[
+\sum_{l=1}^{L_n} q_l^{(n)} = 1.
+\]
+
+For sufficiently large \(n\), the probability mass outside the typical subspace \(\mathcal{H}_{\text{typ}}\) becomes negligible.
+\[
+\operatorname{Tr}[(I - \Pi_{n, \epsilon}) \rho^{\otimes n}] \to 0 \quad \text{as } n \to \infty.
+\]
+
+Thus, the contribution to the fidelity from outside the typical subspace vanishes, ensuring:
+\[
+F(D_n \circ E_n, \rho^{\otimes n}) \to 1 \quad \text{as } n \to \infty.
+\]
 
 \paragraph{Step 4: Achievable Compression Rate}
 
-The number of qubits required for compression is:
+The dimension of the typical subspace \(\mathcal{H}_{\text{typ}}\) is bounded by:
 \[
-m_n = \lceil \log_2 D_{\text{typ}} \rceil \leq n (S(\rho) + \epsilon).
+D_{\text{typ}} \leq 2^{n(S(\rho) + \epsilon)},
 \]
-Since \(R = \lim_{n \to \infty} \frac{m_n}{n}\), we have:
-\[
-R \leq S(\rho) + \epsilon.
-\]
-For any \(R > S(\rho)\), we can choose some \(\epsilon > 0\) small enough to achieve compression with asymptotically perfect fidelity.
 
-Converse Part:
+To encode the typical subspace, the number of qubits required is:
+\[
+m_n = \lceil \log_2 D_{\text{typ}} \rceil \leq n(S(\rho) + \epsilon)
+\]
+
+The compression rate \(R\), defined as the number of qubits per copy of \(\rho\), is:
+\[
+R = \lim_{n \to \infty} \frac{m_n}{n}
+\]
+
+And finally, from the bound on \(m_n\), it follows that:
+\[
+R \leq S(\rho) + \epsilon
+\]
+
+By choosing \(\epsilon > 0\) arbitrarily small, we ensure that \(R\) can approach \(S(\rho)\). Therefore, for any \(R > S(\rho)\), there exists a sufficiently small \(\epsilon > 0\) such that compression is achievable with asymptotically perfect fidelity.
+
+\subsubsection{Converse Part}
 For rates \(R < S(\rho)\), fidelity approaches zero. Assume that there's a sequence of compression schemes with \((n_k, m_k, \delta_k)\) satisfying:
 \[
 R = \lim_{k \to \infty} \frac{m_k}{n_k} < S(\rho) \quad \text{and} \quad \lim_{k \to \infty} \delta_k = 0.
