@@ -325,7 +325,7 @@ A \textbf{Positive Operator-Valued Measure (POVM)} is a quantum measurement desc
 
 In analogy, while a PVM describes pure state measurements, a POVM is to a \emph{mixed state}, often arising from subsystems of larger quantum systems or effects of noisy environments. POVMs are extensively used in quantum information theory.
 
-\subsection{Definition}
+\subsubsection{Definition}
 Let \( \mathcal{H} \) denote a Hilbert space and \( (X, M) \) a measurable space. A POVM is a function \( F \) defined on \( M \) whose values are positive bounded self-adjoint operators on \( \mathcal{H} \), satisfying:
 \[
 F(X) = I_{\mathcal{H}}, \quad \langle \psi | F(E) | \psi \rangle \geq 0,
@@ -338,7 +338,7 @@ In finite dimensions, a POVM is a set of positive semi-definite Hermitian matric
 \]
 where \( I \) is the identity matrix.
 
-\subsection{Properties}
+\subsubsection{Properties}
 1. \textbf{Probability Measure:} For a quantum state \( \rho \), the probability of measurement outcome \( i \) is:
    \[
    \text{Prob}(i) = \text{Tr}(\rho F_i).
@@ -352,7 +352,7 @@ where \( I \) is the identity matrix.
    - In PVMs, measurement operators \( \{P_i\} \) are orthogonal projectors (\( P_iP_j = \delta_{ij}P_i \)).
    - POVMs relax this restriction, enabling non-orthogonal measurement operators and greater flexibility.
 
-\subsection{Applications}
+\subsubsection{Applications}
 POVMs are widely used in quantum information and communication:
 \begin{itemize}
     \item \textbf{Quantum State Discrimination:} Optimal strategies for distinguishing non-orthogonal quantum states.
