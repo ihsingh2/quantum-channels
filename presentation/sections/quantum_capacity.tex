@@ -28,14 +28,15 @@ Q(\mathcal{N}) &= \max_{\phi_{AA'}} \left[ S(B)_\rho - S(AB)_\rho \right] \\
 \end{frame}
 
 \begin{frame}{Proof: Relation with other capacities}
-We will consider a pure state maximizing the coherent information. Let $\sigma_{XA'}$ denote the augmented classical-quantum state that correlates with index x.
+We will consider a pure state that maximizes the quantum capacity. Let $\sigma_{XA'}$ denote the augmented classical-quantum state that correlates with index $x$.
 $$\sigma_{XA'} = \sum_{x} p_X(x) \ket{x}\bra{x} \otimes \ket{\phi_x}\bra{\phi_x}_{A'}$$
 
 \begin{align*}
-Q(\mathcal{N}) &= H(B)_{\sigma} - H(E)_{\sigma}\\
-&= H(B)_{\sigma} - H(B|X)_{\sigma} - H(E)_{\sigma} + H(B|X)_{\sigma}\\
-&= I(X;B)_{\sigma} - H(E)_{\sigma} + H(E|X)_{\sigma}\\
-&= I(X;B)_{\sigma} - I(X;E)_{\sigma}\\
-&\le P(\mathcal{N}).
+Q(\mathcal{N}) &= \max_{\rho} \left[ S(B)_{\rho} - S(E)_{\rho} \right] \\
+&= S(B)_{\sigma} - S(E)_{\sigma}\\
+&= S(B)_{\sigma} - S(B|X)_{\sigma} - S(E)_{\sigma} + S(B|X)_{\sigma}\\
+&= I(X;B)_{\sigma} - I(X;E)_{\sigma} \\
+&\leq \max_{\rho} \left[ I(X;B)_{\rho} - I(X;E)_{\rho} \right] \\
+&\leq P(\mathcal{N})
 \end{align*}
 \end{frame}

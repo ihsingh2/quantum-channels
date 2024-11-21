@@ -4,17 +4,22 @@
 
 Consider a three-user communication scenario involving Alice, Bob, and Eve, where Alice wishes to send message to Bob while ensuring privacy from Eve. The communication channel $\mathcal{N}$, called the wiretap channel, is defined by the conditional probability distribution $p_{Y,Z|X}(y, z|x)$. Here, $X$ is the input random variable Alice controls, $Y$ is Bob's received output, and $Z$ is Eve's received output.
 
+The information throughput may be expressed as $I(U; Y) - I(U; Z)$, where $U$ is an auxiliary random variable chosen by Alice to optimize the input distribution $p_{U,X}(u, x)$. The expression thus captures the difference in the understanding between the sender and the receiver, and the sender and the eavesdropper. The private capacity $P(\mathcal{N})$ of a classical wiretap channel $\mathcal{N} = p_{Y,Z|X}$ is defined as the maximum achievable information throughput.
+
+\begin{definition}[Private Capacity of a Wiretap Channel]
+The private information $P(\mathcal{N})$ of a classical wiretap channel $\mathcal{N} = p_{Y,Z|X}$ is defined as:
+$$P(\mathcal{N}) = \max_{p_{U,X}(u,x)} \left[ I(U;Y) - I(U;Z) \right]$$
+\end{definition}
+
+We would like to examine the properties of this defined measure, and compare it against our intuitive understanding of channel capacity. This includes non-negativity -- is the capacity always positive, additivity -- does $n$ usage of the channel result in $n$ times the throughput, and asymptotic capacity -- is the average throughput constant in the long run.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/private_communication_wiretap_channel.png}
     \caption{Classical wiretap channel \cite{Wilde_2016}.}
 \end{figure}
 
-The information throughput may be expressed as $I(U; Y) - I(U; Z)$, where $U$ is an auxiliary random variable chosen by Alice to optimize the input distribution $p_{U,X}(u, x)$. The expression thus captures the difference in the understanding between the sender and the receiver, and the sender and the eavesdropper. The private capacity $P(\mathcal{N})$ of a classical wiretap channel $\mathcal{N} = p_{Y,Z|X}$ is defined as the maximum achievable information throughput.
-
-$$P(\mathcal{N}) = \max_{p_{U,X}(u,x)} \left[ I(U;Y) - I(U;Z) \right]$$
-
-We would like to examine the properties of this defined measure, and compare it against our intuitive understanding of channel capacity. This includes non-negativity -- is the capacity always positive, additivity -- does $n$ usage of the channel result in $n$ times the throughput, and asymptotic capacity -- is the throughput constant in the long run.
+\subsection{Properties of Private Capacity of a Wiretap Channel}
 
 \begin{theorem}[Non-negativity]
 The private capacity $P(\mathcal{N})$ of a wiretap channel is non-negative.
@@ -88,16 +93,22 @@ Consider a quantum channel $\mathcal{N}$ given by the operator $\mathcal{U}_{A' 
 
 $$\rho_{XA'} = \sum_{x} p_X(x) \ket{x}\bra{x}_X \otimes \rho_{A'}^x $$
 
+The private capacity $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is defined similar to the private capacity of a wiretap channel. Here, we will replace the classical mutual information with quantum mutual information, and the maximization will be over all the classical quantum states described earlier.
+
+\begin{definition}[Private Capacity of a Quantum Channel]
+The private information $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is defined as:
+$$P(\mathcal{N}) = \max_{\rho_{XA'}} \left[ I(X;B)_\rho - I(X;E)_\rho \right]$$
+\end{definition}
+
+We shall see that this definition of private capacity too satisifies non-negativity, but in contrast to the case of wiretap channel it violates the additivity relation.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{figures/private_communication_quantum_channel.png}
     \caption{Private communication through a quantum channel \cite{Gyongyosi_2018}.}
 \end{figure}
 
-The private capacity $P(\mathcal{N})$ of a quantum channel $\mathcal{N}$ is defined as follows, analogous to the private capacity of a wiretap channel. Here, we replace the classical mutual information with quantum mutual information, and the maximization is over all the classical quantum states described earlier.
-$$P(\mathcal{N}) = \max_{\rho_{XA'}} \left[ I(X;B)_\rho - I(X;E)_\rho \right]$$
-
-We shall see that this definition of private capacity too satisifies non-negativity, but in contrast to the case of wiretap channel it violates the additivity relation.
+\subsection{Properties of Private Capacity of a Quantum Channel}
 
 \begin{theorem}[Non-negativity]
 The private capacity $P(\mathcal{N})$ of a quantum channel is non-negative.
@@ -105,7 +116,7 @@ $$P(\mathcal{N}) \geq 0$$
 \end{theorem}
 
 \begin{proof}
-TODO
+Similar to the proof in the classical wiretap channel case, we can consider a degenerate input state $\rho_{XA'}$ of the form $\ket{0}\bra{0}_X \otimes \psi_{A'}$, where $\psi_{A'}$ is a pure state. The private information of this state is zero. Since the maximization is over all possible input states, the private capacity of the channel is guaranteed to be atleast zero, or non-negative.
 \end{proof}
 
 \begin{theorem}[Additivity]
