@@ -2,4 +2,53 @@
 
 \subsection{Capacity}
 
+We provide two examples of quantum channels here, and calculate various metrics of
+their capacity:
+
+
+
 \subsection{Superadditivity}
+
+A fascinating example of superadditivity in quantum channels involves the concept
+of \textbf{superactivation}. Superactivation refers to the phenomenon where two
+quantum channels, each with zero individual quantum capacity, can achieve a positive
+quantum capacity when used together. This behavior is counterintuitive, and quite
+the opposite of what you would expect if we were dealing with classical channels
+instead. We provide an example here:
+
+\begin{quotation}
+    In a 2008 study by Graeme Smith and Jon Yard \cite{Smith_2008}, the authors demonstrated
+    the existence of two zero-capacity quantum channels, each individually incapable of
+    transmitting quantum information, which, when used jointly, could support the reliable
+    transmission of quantum information. The study highlights that certain quantum channels,
+    despite having no individual capacity to send quantum data, can "activate" each other
+    under joint use, allowing information to pass through the combined channel setup. This
+    unique behavior is not observed in classical communication channels, where combining
+    two zero-capacity channels will always result in zero capacity for the combined
+    channel.
+
+    Smith and Yard's example involved two specific types of quantum channels known as
+    \textbf{Private Horodecki channels} and \textbf{Symmetric channels}. Private Horodecki
+    channels are designed to have zero quantum capacity while still exhibiting some level
+    of classical and private capacities. Symmetric channels, on the other hand, have zero
+    capacity for both classical and quantum transmission due to symmetry constraints that
+    prevent any meaningful transmission of information (transmission through the symmetric
+    channel would violate the No-cloning theorem). When these two types of channels are
+    used together, however, they demonstrate a form of superadditivity: the combined
+    quantum channel has a positive capacity, enabling it to transmit quantum information
+    reliably.
+
+    The mechanics behind superactivation stem from quantum interactions between the two
+    channel types. The private Horodecki channel alone cannot maintain quantum coherence
+    due to limitations related to its structure, while the symmetric channel alone is
+    constrained by its symmetries. However, when these channels are combined in a
+    particular way, each channel’s limitations effectively "cancel out" the limitations of
+    the other, allowing a positive quantum capacity to emerge.
+\end{quotation}
+
+This example ilustrates an astounding result in Quantum Information Theory. Not only is
+it possible for quantum channels to have superadditive capacities, but it is also possible
+for channels with Zero capacities to combine to form channels with Non-Zero capacities!
+
+This bizzare result is something worth pondering upon, and in our opinion, the perfect food
+for thought to end this Term paper on.
