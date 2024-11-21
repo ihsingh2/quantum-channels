@@ -53,11 +53,22 @@ The first equality follows from the definition of coherent information. The seco
 \end{proof}
 
 \begin{theorem}[Non-additivity]
-$$Q(\mathcal{N} \otimes \mathcal{M}) \neq Q(\mathcal{N}) + Q(\mathcal{M})$$
+Let $\mathcal{N}_1$ and $\mathcal{N}_2$ represent two quantum channels. The quantum capacity of the combined quantum channel $\mathcal{N}_1 \otimes \mathcal{N}_2$ is not equal to the sum of the individual private capacities of $\mathcal{N}_1$ and $\mathcal{N}_2$.
+$$Q(\mathcal{N}_1 \otimes \mathcal{N}_2) \neq Q(\mathcal{N}_1) + Q(\mathcal{N}_2)$$
 \end{theorem}
 
 \begin{proof}
-TODO
+Consider a private Horodecki channel $\mathcal{N}_H$ and a symmetric channel of unbounded dimension $\mathcal{A}$. These channels are known to have the following properties \cite{Horodecki_1996} \cite{Horodecki_1997} \cite{Smith_2008_Symmetric}.
+$$P(\mathcal{N}_H) > 0, Q(\mathcal{N}_H) = 0, Q(A) = 0$$
+
+Further, we will utilize the following relation between the private capacity and the assisted capacity \cite{Smith_2008}.
+$$\frac{1}{2} P(N_H) \leq Q_A(N_H)$$
+
+Since $P(\mathcal{N}_H) > 0$, it follows that the assisted capacity $Q_A(\mathcal{N}_H) > 0$. Further, since $A$ is a symmetric channel of unbounded dimension, the quantum capacity of the joint channel can be related with the assisted capacity as follows \cite{Smith_2008_Symmetric}.
+$$Q(\mathcal{N}_H \times A) = Q_A(\mathcal{N}_H) > 0$$
+
+Finally, note that $Q(\mathcal{N}_H) + Q(A) = 0$. We can thus conclude the following relation establishing non-additivity.
+$$Q(\mathcal{N}_H \times A) \neq Q(\mathcal{N}_H) + Q(A)$$
 \end{proof}
 
 \begin{theorem}[Relation with other capacities]

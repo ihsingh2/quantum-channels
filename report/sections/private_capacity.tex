@@ -119,11 +119,27 @@ $$P(\mathcal{N}) \geq 0$$
 Similar to the proof in the classical wiretap channel case, we can consider a degenerate input state $\rho_{XA'}$ of the form $\ket{0}\bra{0}_X \otimes \psi_{A'}$, where $\psi_{A'}$ is a pure state. The private information of this state is zero. Since the maximization is over all possible input states, the private capacity of the channel is guaranteed to be atleast zero, or non-negative.
 \end{proof}
 
-\begin{theorem}[Additivity]
+\begin{theorem}[Non-additivity]
 Let $\mathcal{N}_1$ and $\mathcal{N}_2$ represent two quantum channels. The private capacity of the combined quantum channel $\mathcal{N}_1 \otimes \mathcal{N}_2$ is not equal to the sum of the individual private capacities of $\mathcal{N}_1$ and $\mathcal{N}_2$.
 $$P(\mathcal{N}_1 \otimes \mathcal{N}_2) \neq P(\mathcal{N}_1) + P(\mathcal{N}_2)$$
 \end{theorem}
 
 \begin{proof}
-TODO
+We construct a new channel $T_k^\mathcal{N}$ based on an arbitrary channel $\mathcal{N}$, such that $C(T_k^\mathcal{N})$ is close to $C(\mathcal{N})$.
+$$C(\mathcal{N}) \leq C(T_k^\mathcal{N}) \leq C(\mathcal{N}) + \delta(k)$$
+
+Further, consider a 50\% erasure channel $A$. The quantum capacity of the combined channel $Q(T_k^N \otimes A)$ satisfies the following relation with the entanglement-assisted capacity $Q_E(\mathcal{N})$ \cite{PhysRevLett.83.3081}.
+$$Q(T_k^\mathcal{N} \otimes A) \geq Q_E(\mathcal{N})$$
+
+For channels $\mathcal{N}$ such that $Q_E(\mathcal{N}) > C(\mathcal{N})$, we can combine the two results as follows.
+$$Q(T_k^\mathcal{N} \otimes A) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N})$$
+
+As we shall prove in the subsequent section, the classical, private and quantum capacities of a quantum channel $\mathcal{N}$ are related as $Q(\mathcal{N}) \leq P(\mathcal{N}) \leq C(\mathcal{N})$. We can use this fact to write the following.
+
+$$P(T_k^\mathcal{N} \otimes A) \geq Q(T_k^\mathcal{N} \otimes A) \geq Q_E(\mathcal{N}) > C(\mathcal{N}) \geq C(T_k^\mathcal{N}) \geq P(T_k^\mathcal{N})$$
+
+Since erasure channels have zero private and quantum capacities, when $p \geq 1/2$, $P(A) = Q(A) = 0$ \cite{PhysRevLett.78.3217}. This gives us the following result.
+$$P(T_k^\mathcal{N} \otimes A) > P(T_k^\mathcal{N}) + P(A)$$
+
+Thus, the private capacity $P(\mathcal{N})$ of the constructed quantum channel is non-additive.
 \end{proof}
