@@ -44,7 +44,7 @@
 % theorem
 \usepackage{xpatch}
 \usepackage{amsthm}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}{Definition}[section]
 \xpretocmd{\proof}{\setlength{\parindent}{0pt}}{}{}
 
@@ -58,6 +58,7 @@
 % front
 \maketitle
 \tableofcontents
+\clearpage
 
 \renewcommand{\pageauthor}{Shreyas Sinha}
 \include{./sections/introduction}
