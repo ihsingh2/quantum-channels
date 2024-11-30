@@ -55,6 +55,32 @@
     \end{definition}
 \end{frame}
 
+\begin{frame}{Environment and reference systems}
+    \begin{definition}[Product State]
+        The Tensor Product of a state with another state (often the environment or a reference system).
+        \begin{equation*}
+            \rho_{AB} = \rho_A \otimes \rho_B
+        \end{equation*}
+    \end{definition}
+    \begin{definition}[Bipartite states]
+        A state is said to be Bipartite if it is a Tensor Product of two different states.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Environment and reference systems}
+    \begin{definition}[Separable states]
+        A bipartite state $\sigma_{AB}$ is said to be Separable if it can be written in the form:
+        \begin{equation*}
+            \sigma_{AB} = \displaystyle\sum_{x} p_X(x)|\psi_x\rangle\langle\psi_x|_A \otimes |\phi_x\rangle\langle\phi_x|_B
+        \end{equation*}
+        for some probability distribution $p_X(x)$ and sets $\{| \psi_x \rangle_A\}$ and $\{| \phi_x \rangle_B\}$ of pure states.
+    \end{definition}
+
+    \begin{definition}[Entanglement]
+        A state that is not separable is said to be entangled.
+    \end{definition}
+\end{frame}
+
 \begin{frame}
     \begin{figure}
         \includegraphics[scale=0.1]{channel2.png}
@@ -74,6 +100,8 @@
     uses show up at many useful places throughout Quantum information theory. It makes channels easier to understand as well, by decomposing them into several
     "sub-channels".
 \end{frame}
+
+\renewcommand{\pageauthor}{Yash Seri}
 
 \begin{frame}{Von Neumann Entropy}
     The quantum analogue of the classical entropy is the Von Neumann Entropy. It is defined on the density operator as:
